@@ -1,11 +1,59 @@
 :root {
-  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #17171d;
-  background: #ffffff;
+  /* — surfaces — neutral light grey */
+  --canvas: #f1f2f4;
+  --surface: #ffffff;
+  --surface-2: #f8f9fa;
+  --surface-3: #eef0f2;
+  --border: #e5e7ea;
+  --border-strong: #d7dade;
+
+  /* — text — */
+  --text: #1a1b1d;
+  --text-2: #53565c;
+  --text-muted: #86898f;
+  --text-faint: #aeb1b7;
+
+  /* — accent — */
+  --accent: #8756ff;
+  --accent-hover: #7642f2;
+  --accent-ink: #5c31c9;
+  --accent-soft: #e3d8ff;
+  --accent-tint: #f4efff;
+  --accent-line: #cbb6ff;
+
+  /* — status — soft tint + coloured ink, never a flat fill */
+  --info: #4a8fe0;
+  --success: #1c8a58;
+  --success-tint: #e7f4ec;
+  --warning-ink: #96650a;
+  --warning-tint: #fbeed3;
+  --danger: #c4432c;
+  --danger-tint: #fbedea;
+  --danger-line: #f0cdc5;
+
+  /* — shape — */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-pill: 999px;
+
+  /* — elevation — neutral, barely there — */
+  --shadow-sm: 0 1px 2px rgba(24, 27, 33, .05);
+  --shadow-md: 0 2px 6px rgba(24, 27, 33, .06);
+  --shadow-lg: -18px 0 60px rgba(22, 25, 31, .16);
+  --ring: 0 0 0 3px rgba(135, 86, 255, .16);
+
+  /* — type — */
+  --font-sans: 'Inter', ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: var(--canvas);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
 html, body, #root { margin: 0; min-width: 320px; min-height: 100%; }
-body { min-height: 100vh; }
+body { min-height: 100vh; background: var(--canvas); }
