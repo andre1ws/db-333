@@ -192,6 +192,19 @@ const promotions = [
   { id: 14, name: 'Offers for freelancers', segment: 'CSP', countries: 'All countries', leadsTo: 'Balance', endDate: '—', updated: '11 Mar 2026' },
 ]
 
+const labels = [
+  { id: 1, name: 'Horyx', csp: ['Horyx'], more: 0, domain: 'app.horyx.com', app: false },
+  { id: 2, name: '2btube', csp: ['2BTUBE'], more: 0, domain: 'mcpay2btube.com', app: true },
+  { id: 3, name: 'Garna', csp: ['SMART SYSTEMS - FZCO | Garna', 'IT-SKILLS SRL | Garna'], more: 937, domain: 'app.garna.io', app: true },
+  { id: 4, name: 'Unite.ad', csp: ['THINKBIG'], more: 0, domain: 'pay.thinkbigcsp.com', app: true },
+  { id: 5, name: 'POPSync', csp: ['POPS'], more: 0, domain: 'popssync.com', app: true },
+  { id: 6, name: 'UFG Pay', csp: ['UFG'], more: 0, domain: 'app.unionforgamers.com', app: true },
+  { id: 7, name: 'CentroFlex', csp: ['Fansly', 'Clips4Sale | Centroflex', 'CentroFlex | Garna'], more: 0, domain: 'centroflex.com', app: true },
+  { id: 8, name: 'RHEI Pay Pro', csp: ['RHEI'], more: 0, domain: 'paypro.rhei.com', app: false },
+  { id: 9, name: 'Shft', csp: ['Diwan'], more: 0, domain: 'weareshft.com', app: false },
+  { id: 10, name: 'MC Pay', csp: ['Meltechmusic', 'mediacube', 'Play Network', 'Divo', 'ZoyaTech Limited'], more: 42, domain: 'mcpay.io', app: true },
+]
+
 const users = [
   {
     id: 1,
@@ -544,6 +557,12 @@ const promotionFilterFields = buildFilterFields(promotions, [
   { key: 'leadsTo', label: 'Button leads to', read: (item) => item.leadsTo },
   { key: 'endDate', label: 'End date', read: (item) => item.endDate },
   { key: 'updated', label: 'Date of last update', read: (item) => item.updated },
+])
+
+const labelFilterFields = buildFilterFields(labels, [
+  { key: 'csp', label: 'CSP', read: (item) => item.csp },
+  { key: 'domain', label: 'Domain name', read: (item) => item.domain },
+  { key: 'app', label: 'Presence of app', read: (item) => yesNo(item.app) },
 ])
 
 const transactionFilterFields = buildFilterFields(transactions, [
@@ -1703,17 +1722,153 @@ function PromotionsPage({ draft, setDraft }) {
   )
 }
 
+function LabelModal({ label, onClose }) {
+  const isEditing = Boolean(label)
+  const [name, setName] = useState(label?.name ?? '')
+  const [domain, setDomain] = useState(label?.domain ?? '')
+  const [hasApp, setHasApp] = useState(label?.app ?? false)
+
+  return (
+    <div className="side-modal-backdrop" onMouseDown={onClose}>
+      <aside className="side-modal" onMouseDown={(event) => event.stopPropagation()}>
+        <header>
+          <h2>{isEditing ? 'Edit label' : 'Create a label'}</h2>
+          <button className="icon-button" onClick={onClose} aria-label="Close label"><X size={18} /></button>
+        </header>
+
+        <div className="modal-form">
+          <section className="modal-section">
+            <h3>Label</h3>
+            <label className="form-field">
+              <span>Label name</span>
+              <input
+                className="standalone-input"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                placeholder="How the label is shown in the list"
+              />
+            </label>
+            <label className="form-field">
+              <span>Domain name</span>
+              <input
+                className="standalone-input"
+                value={domain}
+                onChange={(event) => setDomain(event.target.value)}
+                placeholder="app.example.com"
+              />
+            </label>
+          </section>
+
+          <section className="modal-section">
+            <h3>CSP</h3>
+            <FormField label="Attached CSP" placeholder="Select a CSP" />
+            {isEditing && label.csp.length > 0 && (
+              <div className="csp-cell modal-csp">
+                {label.csp.map((item) => <span className="role-pill" key={item}>{item}</span>)}
+                {label.more > 0 && <span className="csp-more">+{label.more}</span>}
+              </div>
+            )}
+          </section>
+
+          <section className="modal-section">
+            <h3>App</h3>
+            <label className="toggle-row">
+              <input type="checkbox" checked={hasApp} onChange={(event) => setHasApp(event.target.checked)} />
+              <span className="toggle" />
+              Presence of app
+            </label>
+          </section>
+        </div>
+
+        <footer>
+          <button className="primary-button" onClick={onClose}>{isEditing ? 'Save changes' : 'Create'}</button>
+          <button className="secondary-button" onClick={onClose}>Cancel</button>
+        </footer>
+      </aside>
+    </div>
+  )
+}
+
+function LabelsPage({ draft, setDraft }) {
+  const [query, setQuery] = useState('')
+  const filters = useFilters(labelFilterFields, 'voiceon.labels.filter-presets')
+
+  const filtered = useMemo(() => {
+    const normalized = query.trim().toLowerCase()
+    const matched = normalized
+      ? labels.filter((item) => item.name.toLowerCase().includes(normalized))
+      : labels
+    return filters.apply(matched)
+  }, [query, filters.applied])
+
+  return (
+    <div className="promotions-page">
+      <HeaderTools>
+        <label className="users-search">
+          <Search size={16} />
+          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Label name" />
+        </label>
+        <FilterBar filters={filters} />
+        <button className="archive-button toolbar-archive"><Archive size={16} /> Archive</button>
+      </HeaderTools>
+
+      <section className="panel promotions-panel">
+        <div className="promotions-table-wrap">
+          <table className="promotions-table labels-table">
+            <thead>
+              <tr>
+                <th><span className="th-user">Label name <small>{filtered.length}</small></span></th>
+                <th>CSP</th>
+                <th>Domain name</th>
+                <th>Presence of app</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filtered.map((item) => (
+                <tr key={item.id} onClick={() => setDraft(item)}>
+                  <td><strong>{item.name}</strong></td>
+                  <td>
+                    <div className="csp-cell">
+                      {item.csp.map((csp) => <span className="role-pill" key={csp}>{csp}</span>)}
+                      {item.more > 0 && <span className="csp-more">+{item.more}</span>}
+                    </div>
+                  </td>
+                  <td className="domain-cell">{item.domain}</td>
+                  <td>
+                    {item.app
+                      ? <CircleCheck size={17} strokeWidth={1.5} className="app-check" />
+                      : <span className="empty-cell">—</span>}
+                  </td>
+                </tr>
+              ))}
+              {filtered.length === 0 && (
+                <tr>
+                  <td colSpan={4} className="users-empty">No labels match your search.</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {draft !== undefined && <LabelModal label={draft} onClose={() => setDraft(undefined)} />}
+    </div>
+  )
+}
+
 function App() {
   const [active, setActive] = useState('Users')
   const [menuOpen, setMenuOpen] = useState(false)
   const [headerSlot, setHeaderSlot] = useState(null)
   const [notificationDraft, setNotificationDraft] = useState(undefined)
   const [promotionDraft, setPromotionDraft] = useState(undefined)
+  const [labelDraft, setLabelDraft] = useState(undefined)
 
   const changeSection = (label) => {
     setActive(label)
     setNotificationDraft(undefined)
     setPromotionDraft(undefined)
+    setLabelDraft(undefined)
   }
 
   const group = findNavGroup(active)
@@ -1721,6 +1876,7 @@ function App() {
   const createAction = {
     Notifications: { label: 'New notification', run: () => setNotificationDraft(null) },
     Promotions: { label: 'New promotion', run: () => setPromotionDraft(null) },
+    Labels: { label: 'New label', run: () => setLabelDraft(null) },
   }[active]
 
   return (
@@ -1747,13 +1903,16 @@ function App() {
         </header>
 
         <HeaderSlotContext.Provider value={headerSlot}>
-          <div className={`content ${isTransactions || ['Users', 'Notifications', 'Promotions'].includes(active) ? 'content-wide' : ''}`}>
+          <div className={`content ${isTransactions || ['Users', 'Notifications', 'Promotions', 'Labels'].includes(active) ? 'content-wide' : ''}`}>
             {active === 'Users' && <UsersPage />}
             {active === 'Notifications' && (
               <NotificationsPage draft={notificationDraft} setDraft={setNotificationDraft} />
             )}
             {active === 'Promotions' && (
               <PromotionsPage draft={promotionDraft} setDraft={setPromotionDraft} />
+            )}
+            {active === 'Labels' && (
+              <LabelsPage draft={labelDraft} setDraft={setLabelDraft} />
             )}
             {isTransactions && <TransactionsPage region={active.replace('Transactions ', '')} />}
           </div>
