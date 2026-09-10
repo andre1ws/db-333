@@ -767,13 +767,13 @@ function Sidebar({ open, onClose, active, setActive }) {
 }
 
 function UserAvatar({ name, variant, size = 'sm' }) {
-  const iconSize = size === 'lg' ? 28 : 14
+  const iconSize = size === 'lg' ? 48 : 22
   if (variant?.startsWith('photo')) {
     return <span className={`user-avatar photo ${variant} ${size}`}>{name.slice(0, 1)}</span>
   }
   return (
     <span className={`user-avatar placeholder ${size}`}>
-      <UserRound size={iconSize} strokeWidth={2} />
+      <UserRound size={iconSize} strokeWidth={1.5} fill="currentColor" />
     </span>
   )
 }

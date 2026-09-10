@@ -387,9 +387,8 @@ button { transition: .18s ease; }
 .user-avatar.lg {
   width: 64px; height: 64px; flex-basis: 64px; font-size: 20px; border-radius: 16px;
 }
-/* neutral grey, so the accent stays reserved for data and accents */
 .user-avatar.placeholder {
-  color: #fff; background: linear-gradient(145deg, #b0b3b8, #85888f);
+  color: #fff; background: var(--accent);
 }
 .user-avatar.photo {
   color: #fff; font-size: 12px; font-weight: 600;
