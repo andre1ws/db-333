@@ -65,7 +65,7 @@ button { border: 0; cursor: pointer; color: inherit; }
   border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;
 }
 .topbar {
-  border-bottom: 1px solid var(--border); padding: 12px 18px;
+  padding: 12px 18px;
   display: flex; flex-direction: column; gap: 12px;
   position: sticky; top: 0; background: var(--surface); z-index: 10;
 }
