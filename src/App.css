@@ -399,7 +399,7 @@ button { transition: .18s ease; }
   display: grid; place-items: center; overflow: hidden;
 }
 .user-avatar.lg {
-  width: 64px; height: 64px; flex-basis: 64px; font-size: 20px; border-radius: 16px;
+  width: 52px; height: 52px; flex-basis: 52px; font-size: 17px; border-radius: 14px;
 }
 .user-avatar.placeholder {
   color: #fff; background: var(--accent);
@@ -444,10 +444,10 @@ button { transition: .18s ease; }
   .users-search { max-width: none; }
 }
 
-.user-card { padding: 16px 32px 32px; }
+.user-card { padding: 16px; }
 .user-card-nav {
   display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
-  padding-bottom: 16px; margin-bottom: 20px; border-bottom: 1px solid var(--border);
+  padding-bottom: 12px; margin-bottom: 16px; border-bottom: 1px solid var(--border);
 }
 .text-link {
   display: inline-flex; align-items: center; gap: 6px; background: transparent;
@@ -455,26 +455,33 @@ button { transition: .18s ease; }
 }
 .text-link svg { color: var(--text-muted); }
 .text-link:hover { background: var(--surface-3); color: var(--text); }
-.user-card-actions { display: flex; flex-wrap: wrap; gap: 2px; }
+.user-card-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.user-card-actions .text-link {
+  height: 32px; padding: 0 13px 0 11px; gap: 7px; border-radius: var(--r-pill);
+  background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+}
+.user-card-actions .text-link:hover {
+  background: var(--surface-2); border-color: var(--border-strong); color: var(--text);
+}
 .user-card-hero {
-  display: flex; align-items: center; gap: 14px; margin: 0 0 20px; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 12px; margin: 0 0 16px; flex-wrap: wrap;
 }
 .user-card-identity { min-width: 0; flex: 1; }
 .user-card-name { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.user-card-name h2 { margin: 0; font-size: 24px; letter-spacing: -.7px; font-weight: 600; color: var(--text); }
+.user-card-name h2 { margin: 0; font-size: 20px; letter-spacing: -.5px; font-weight: 700; color: var(--text); }
 .user-card-meta {
-  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
-  margin: 6px 0 0; font-size: 12.5px; color: var(--text-muted);
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+  margin: 3px 0 0; font-size: 12px; color: var(--text-muted);
 }
 .email-verified { display: inline-flex; align-items: center; gap: 5px; }
 .email-verified svg { color: var(--success); }
 .profile-tags { display: inline-flex; gap: 6px; flex-wrap: wrap; }
 .profile-tag {
-  display: inline-flex; align-items: center; padding: 3px 10px; border-radius: var(--r-pill);
+  display: inline-flex; align-items: center; padding: 2px 9px; border-radius: var(--r-pill);
   background: var(--surface-3); color: var(--text-2); font-size: 10.5px; font-weight: 500;
 }
 .user-card-balance {
-  text-align: right; margin-left: auto; padding: 10px 16px; border-radius: var(--r-lg);
+  text-align: right; margin-left: auto; padding: 8px 14px; border-radius: var(--r-md);
   background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
 }
 .user-card-balance span {
@@ -482,21 +489,21 @@ button { transition: .18s ease; }
   letter-spacing: .08em; color: var(--text-muted);
 }
 .user-card-balance strong {
-  display: block; margin-top: 5px; font-family: var(--font-mono); font-variant-numeric: tabular-nums;
-  font-size: 15px; font-weight: 500; letter-spacing: -.3px; color: var(--text);
+  display: block; margin-top: 3px; font-family: var(--font-mono); font-variant-numeric: tabular-nums;
+  font-size: 14px; font-weight: 500; letter-spacing: -.3px; color: var(--text);
 }
 .user-card-tabs {
   display: flex; gap: 4px; overflow-x: auto; margin: 0 0 4px;
   border-bottom: 1px solid var(--border);
 }
 .user-card-tabs button {
-  background: transparent; color: var(--text-muted); font-size: 12.5px; font-weight: 500; padding: 10px 12px;
+  background: transparent; color: var(--text-muted); font-size: 12.5px; font-weight: 500; padding: 8px 12px;
   border-bottom: 2px solid transparent; white-space: nowrap;
 }
 .user-card-tabs button:hover { color: var(--text); }
 .user-card-tabs button.active { color: var(--text); border-bottom-color: var(--accent); font-weight: 600; }
 .profile-cards {
-  display: flex; flex-direction: column; gap: 14px; padding: 20px 0 0;
+  display: flex; flex-direction: column; gap: 12px; padding: 16px 0 0;
 }
 .profile-card {
   border-radius: var(--r-lg); padding: 18px 20px;
