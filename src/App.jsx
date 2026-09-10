@@ -1,13 +1,23 @@
-import { useEffect, useMemo, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { createPortal } from 'react-dom'
 import {
-  Archive, ArrowDown, ArrowDownUp, ArrowUp, ArrowUpDown, BadgePercent, BarChart3, Bell, CalendarDays,
+  Archive, ArrowDown, ArrowDownUp, ArrowUp, ArrowUpDown, BadgePercent, BarChart3, CalendarDays,
   Check, ChevronDown, ChevronLeft, ChevronRight, CircleCheck, CircleDollarSign, CircleHelp, Clock, Columns3,
   CreditCard, Download, ExternalLink, FileDown, FilePlus2, FileText, Handshake, ImagePlus, Info, Landmark,
   Menu, MessageCircle, MessagesSquare, Monitor, Pencil, PlaySquare, Plus,
-  Receipt, RefreshCw, Rocket, ScanFace, Search, Settings, SlidersHorizontal, Smartphone,
+  Receipt, RefreshCw, Rocket, ScanFace, Search, SlidersHorizontal, Smartphone,
   Trash2, TrendingUp, UserRound, Users, Video, Wallet, X, Zap,
 } from 'lucide-react'
 import './App.css'
+
+/* Page toolbars sit in the top bar, but their state belongs to the pages —
+   so each page renders its toolbar through a portal into a slot the header owns. */
+const HeaderSlotContext = createContext(null)
+
+function HeaderTools({ children }) {
+  const slot = useContext(HeaderSlotContext)
+  return slot ? createPortal(children, slot) : null
+}
 
 const navItems = [
   {
@@ -1032,7 +1042,7 @@ function UsersPage() {
 
   return (
     <div className="users-page">
-      <div className="users-toolbar">
+      <HeaderTools>
         <label className="users-search">
           <Search size={16} />
           <input
@@ -1051,7 +1061,7 @@ function UsersPage() {
           <button className="icon-button toolbar-outline-button" aria-label="Export"><Download size={16} /></button>
           <button className="icon-button toolbar-outline-button" aria-label="Columns"><Columns3 size={16} /></button>
         </div>
-      </div>
+      </HeaderTools>
 
       {filters.panelOpen && <FiltersPanel {...filters.panelProps} />}
 
@@ -1153,7 +1163,7 @@ function NotificationsPage({ draft, setDraft }) {
 
   return (
     <div className="users-page">
-      <div className="users-toolbar">
+      <HeaderTools>
         <label className="users-search">
           <Search size={16} />
           <input
@@ -1164,7 +1174,7 @@ function NotificationsPage({ draft, setDraft }) {
         </label>
         <FilterBar filters={filters} />
         <button className="archive-button toolbar-archive"><Archive size={16} /> Archive</button>
-      </div>
+      </HeaderTools>
 
       {filters.panelOpen && <FiltersPanel {...filters.panelProps} />}
 
@@ -1270,7 +1280,7 @@ function TransactionsPage({ region }) {
 
   return (
     <div className="users-page">
-      <div className="users-toolbar">
+      <HeaderTools>
         <label className="users-search">
           <Search size={16} />
           <input
@@ -1290,7 +1300,7 @@ function TransactionsPage({ region }) {
           ))}
           <button className="icon-button toolbar-outline-button" aria-label="Export"><FileDown size={16} /></button>
         </div>
-      </div>
+      </HeaderTools>
 
       {filters.panelOpen && <FiltersPanel {...filters.panelProps} />}
 
@@ -1621,14 +1631,14 @@ function PromotionsPage({ draft, setDraft }) {
 
   return (
     <div className="promotions-page">
-      <div className="users-toolbar">
+      <HeaderTools>
         <label className="users-search">
           <Search size={16} />
           <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Banner name" />
         </label>
         <FilterBar filters={filters} />
         <button className="archive-button toolbar-archive"><Archive size={16} /> Archive</button>
-      </div>
+      </HeaderTools>
 
       {filters.panelOpen && <FiltersPanel {...filters.panelProps} />}
 
@@ -1669,7 +1679,7 @@ function PromotionsPage({ draft, setDraft }) {
 function App() {
   const [active, setActive] = useState('Users')
   const [menuOpen, setMenuOpen] = useState(false)
-  const [notice, setNotice] = useState(false)
+  const [headerSlot, setHeaderSlot] = useState(null)
   const [notificationDraft, setNotificationDraft] = useState(undefined)
   const [promotionDraft, setPromotionDraft] = useState(undefined)
 
@@ -1706,25 +1716,21 @@ function App() {
               <strong>{active}</strong>
             )}
           </div>
-          <div className="top-actions">
-            <button className="icon-button notification" onClick={() => setNotice(!notice)}><Bell size={19} /><span /></button>
-            <button className="icon-button"><Settings size={19} /></button>
-            <button className="language">EN</button>
-            <button className="avatar" aria-label="Profile">AC</button>
-          </div>
-          {notice && <div className="notice-popover">You're all caught up.</div>}
+          <div className="header-tools" ref={setHeaderSlot} />
         </header>
 
-        <div className={`content ${isTransactions || ['Users', 'Notifications', 'Promotions'].includes(active) ? 'content-wide' : ''}`}>
-          {active === 'Users' && <UsersPage />}
-          {active === 'Notifications' && (
-            <NotificationsPage draft={notificationDraft} setDraft={setNotificationDraft} />
-          )}
-          {active === 'Promotions' && (
-            <PromotionsPage draft={promotionDraft} setDraft={setPromotionDraft} />
-          )}
-          {isTransactions && <TransactionsPage region={active.replace('Transactions ', '')} />}
-        </div>
+        <HeaderSlotContext.Provider value={headerSlot}>
+          <div className={`content ${isTransactions || ['Users', 'Notifications', 'Promotions'].includes(active) ? 'content-wide' : ''}`}>
+            {active === 'Users' && <UsersPage />}
+            {active === 'Notifications' && (
+              <NotificationsPage draft={notificationDraft} setDraft={setNotificationDraft} />
+            )}
+            {active === 'Promotions' && (
+              <PromotionsPage draft={promotionDraft} setDraft={setPromotionDraft} />
+            )}
+            {isTransactions && <TransactionsPage region={active.replace('Transactions ', '')} />}
+          </div>
+        </HeaderSlotContext.Provider>
       </main>
     </div>
   )
