@@ -547,8 +547,12 @@ button { transition: .18s ease; }
 /* Labels: a divider after the name column, CSP chips with an overflow count */
 .labels-table { min-width: 900px; }
 .labels-table th:first-child, .labels-table td:first-child { border-right: 1px solid var(--border); }
-.labels-table td { height: 52px; }
-.labels-table th:last-child, .labels-table td:last-child { width: 130px; }
+.labels-table td { height: 46px; font-size: 12.5px; }
+/* only four columns, so pin the narrow ones and let CSP absorb the slack —
+   otherwise every column stretches and the rows read as empty */
+.labels-table th:first-child, .labels-table td:first-child { width: 200px; }
+.labels-table th:nth-child(3), .labels-table td:nth-child(3) { width: 220px; }
+.labels-table th:last-child, .labels-table td:last-child { width: 120px; }
 .csp-cell { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .csp-cell .role-pill { max-width: none; font-size: 11px; }
 .csp-more { color: var(--text-muted); font-size: 11px; font-weight: 500; }
