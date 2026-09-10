@@ -1821,7 +1821,6 @@ function LabelsPage({ draft, setDraft }) {
                 <th>CSP</th>
                 <th>Domain name</th>
                 <th>Presence of app</th>
-                <th aria-label="Row actions" />
               </tr>
             </thead>
             <tbody>
@@ -1845,6 +1844,13 @@ function LabelsPage({ draft, setDraft }) {
                         >
                           <ExternalLink size={14} />
                         </button>
+                        <button
+                          className="row-action"
+                          aria-label={`Archive ${item.name}`}
+                          onClick={(event) => event.stopPropagation()}
+                        >
+                          <Archive size={14} />
+                        </button>
                       </span>
                     </div>
                   </td>
@@ -1860,22 +1866,11 @@ function LabelsPage({ draft, setDraft }) {
                       ? <CircleCheck size={17} strokeWidth={1.5} className="app-check" />
                       : <span className="empty-cell">—</span>}
                   </td>
-                  <td className="row-action-cell">
-                    <span className="row-actions">
-                      <button
-                        className="row-action"
-                        aria-label={`Archive ${item.name}`}
-                        onClick={(event) => event.stopPropagation()}
-                      >
-                        <Archive size={15} />
-                      </button>
-                    </span>
-                  </td>
                 </tr>
               ))}
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="users-empty">No labels match your search.</td>
+                  <td colSpan={4} className="users-empty">No labels match your search.</td>
                 </tr>
               )}
             </tbody>
