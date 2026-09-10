@@ -65,13 +65,14 @@ button { border: 0; cursor: pointer; color: inherit; }
   border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;
 }
 .topbar {
-  padding: 12px 18px;
-  display: flex; flex-direction: column; gap: 12px;
+  padding: 9px 18px 10px;
+  display: flex; flex-direction: column; gap: 9px;
   position: sticky; top: 0; background: var(--surface); z-index: 10;
 }
-.workspace { min-height: 34px; display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.workspace { min-height: 30px; display: flex; align-items: center; gap: 10px; font-size: 14px; }
 /* the slot page toolbars portal into — always a row of its own */
 .header-tools { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.header-tools .icon-button { width: 32px; height: 32px; }
 .header-tools:empty { display: none; }
 .header-breadcrumb { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 13px; }
 .header-breadcrumb strong { color: var(--text); font-weight: 600; letter-spacing: -.2px; }
@@ -84,14 +85,14 @@ button { border: 0; cursor: pointer; color: inherit; }
 .menu-button { display: none; }
 .header-account { margin-left: auto; display: flex; align-items: center; gap: 6px; }
 .language {
-  height: 32px; padding: 0 6px 0 9px; display: inline-flex; align-items: center; gap: 3px;
+  height: 30px; padding: 0 6px 0 9px; display: inline-flex; align-items: center; gap: 3px;
   background: transparent; border-radius: var(--r-md);
   font-size: 12.5px; font-weight: 600; letter-spacing: -.1px; color: var(--text);
 }
 .language:hover { background: var(--surface-3); }
 .language svg { color: var(--text-muted); }
 .brand-mark {
-  width: 34px; height: 34px; flex: 0 0 34px; border-radius: 50%;
+  width: 30px; height: 30px; flex: 0 0 30px; border-radius: 50%;
   display: grid; place-items: center; color: #fff;
   background: linear-gradient(150deg, #8b6ef2, #4b39c9);
   box-shadow: inset 0 1px 0 #ffffff40;
@@ -99,7 +100,7 @@ button { border: 0; cursor: pointer; color: inherit; }
 .brand-mark:hover { filter: brightness(1.07); }
 
 .content {
-  padding: 12px 0 18px; max-width: 1180px; width: 100%; margin: 0 auto;
+  padding: 6px 0 18px; max-width: 1180px; width: 100%; margin: 0 auto;
   flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: auto;
 }
 .primary-button {
@@ -138,7 +139,7 @@ button { transition: .18s ease; }
 .users-panel { padding: 0; border: 0; border-radius: 0; overflow: hidden; flex: 0 1 auto; min-height: 0; display: flex; flex-direction: column; }
 /* toolbar controls are pills, as in the reference */
 .users-search {
-  flex: 1; min-width: 220px; max-width: 420px; height: 34px;
+  flex: 1; min-width: 220px; max-width: 420px; height: 32px;
   display: flex; align-items: center; gap: 8px; padding: 0 14px;
   border: 1px solid var(--border); border-radius: var(--r-pill); background: var(--surface);
   color: var(--text-muted); box-shadow: var(--shadow-sm);
@@ -164,7 +165,7 @@ button { transition: .18s ease; }
   display: grid; place-items: center; border: 2px solid var(--surface);
 }
 .preset-chip {
-  height: 34px; padding: 0 6px 0 14px; border-radius: var(--r-pill); border: 1px solid var(--border);
+  height: 32px; padding: 0 6px 0 14px; border-radius: var(--r-pill); border: 1px solid var(--border);
   background: var(--surface); color: var(--text-2); font-size: 11.5px; font-weight: 500; white-space: nowrap;
   display: inline-flex; align-items: center; gap: 7px; box-shadow: var(--shadow-sm);
 }
@@ -283,7 +284,7 @@ button { transition: .18s ease; }
 .filters-panel button:disabled { opacity: .45; cursor: not-allowed; }
 .filters-panel .primary-button:disabled:hover { background: var(--accent); }
 .kyc-button, .count-button {
-  height: 34px; padding: 0 13px 0 12px; border-radius: var(--r-pill);
+  height: 32px; padding: 0 13px 0 12px; border-radius: var(--r-pill);
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--surface); border: 1px solid var(--border); color: var(--text-2); font-size: 11.5px;
   font-weight: 500; box-shadow: var(--shadow-sm);
@@ -534,7 +535,7 @@ button { transition: .18s ease; }
 
 
 .archive-button {
-  height: 34px; padding: 0 12px; border-radius: var(--r-pill); display: inline-flex;
+  height: 32px; padding: 0 12px; border-radius: var(--r-pill); display: inline-flex;
   align-items: center; gap: 7px; background: var(--surface); border: 1px solid var(--border);
   color: var(--text-2); font-size: 11.5px; font-weight: 500; box-shadow: var(--shadow-sm);
 }
