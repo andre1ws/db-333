@@ -423,8 +423,9 @@ button { transition: .18s ease; }
   width: 28px; height: 28px; border-radius: 50%; flex: 0 0 28px;
   display: grid; place-items: center; overflow: hidden;
 }
+/* round at every size — inherits the 50% above */
 .user-avatar.lg {
-  width: 52px; height: 52px; flex-basis: 52px; font-size: 17px; border-radius: 14px;
+  width: 52px; height: 52px; flex-basis: 52px; font-size: 17px;
 }
 .user-avatar.placeholder {
   color: #fff; background: var(--accent);
