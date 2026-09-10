@@ -403,7 +403,7 @@ button { transition: .18s ease; }
 /* badges are soft tint + coloured ink, never a flat fill */
 .kyc-pill, .status-pill {
   display: inline-flex; align-items: center; padding: 4px 9px;
-  border-radius: var(--r-sm); font-size: 10px; font-weight: 700; letter-spacing: .04em;
+  border-radius: var(--r-sm); font-size: 10px; font-weight: 600; letter-spacing: .04em;
   color: #fff;
 }
 .kyc-pill.approved, .status-pill.confirmed { background: var(--status-green); }
