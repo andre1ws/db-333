@@ -22,10 +22,11 @@
   --accent-line: #cbb6ff;
 
   /* — status badges — solid and saturated */
-  --status-green: #6ebf5c;
-  --status-red: #e8534a;
-  --status-amber: #f0ad2e;
-  --status-grey: #b6babf;
+  --status-green: #6ec05f;
+  --status-red: #e0574a;
+  --status-amber: #efb02f;
+  --status-violet: #b7a4f2;
+  --status-grey: #b9bcc1;
 
   /* — status accents used as text and icons, not as fills — */
   --info: #4a8fe0;

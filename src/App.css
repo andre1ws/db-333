@@ -422,13 +422,16 @@ button { transition: .18s ease; }
 }
 /* badges are soft tint + coloured ink, never a flat fill */
 .kyc-pill, .status-pill {
-  display: inline-flex; align-items: center; padding: 4px 9px;
+  display: inline-flex; align-items: center; padding: 5px 10px; white-space: nowrap;
   border-radius: var(--r-sm); font-size: 10px; font-weight: 600; letter-spacing: .04em;
   color: #fff;
 }
 .kyc-pill.approved, .status-pill.confirmed { background: var(--status-green); }
-.kyc-pill.blocked { background: var(--status-red); }
+.kyc-pill.blocked,
+.status-pill.rejected, .status-pill.rejected-by-api { background: var(--status-red); }
 .kyc-pill.pending, .status-pill.new { background: var(--status-amber); }
+.status-pill.in-processing { background: var(--status-violet); }
+.status-pill.in-processing-auto { background: var(--status-grey); }
 .empty-cell { color: var(--text-faint); }
 .action-cell {
   display: inline-flex; align-items: center; gap: 7px; color: var(--text-2); white-space: nowrap;

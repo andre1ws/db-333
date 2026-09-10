@@ -152,19 +152,19 @@ const notifications = [
 
 const transactions = [
   { id: 1, user: 'Zakhar M', avatar: 'default', flagged: false, status: 'NEW', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'Tether TRC20 – USDT', methodLink: true, amount: 8400 },
-  { id: 2, user: 'Tatsiana Saroka', avatar: 'default', flagged: true, status: 'NEW', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To an account in BYN (non sanctioned banks)', methodLink: false, amount: 1250 },
+  { id: 2, user: 'Tatsiana Saroka', avatar: 'default', flagged: true, status: 'IN PROCESSING', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To an account in BYN (non sanctioned banks)', methodLink: false, amount: 1250 },
   { id: 3, user: 'Broken Mouse Media LTD', avatar: 'default', flagged: false, status: 'CONFIRMED', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To an account in local currency (Airwallex)', methodLink: true, amount: 104300 },
   { id: 4, user: 'Daniil Parshukov', avatar: 'default', flagged: false, status: 'NEW', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To an account in RUB (non sanctioned banks)', methodLink: true, amount: 3120 },
-  { id: 5, user: 'KONTORA GAMES LLC', avatar: 'default', flagged: false, status: 'NEW', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'Tether TRC20 – USDT', methodLink: false, amount: 46800 },
-  { id: 6, user: 'Ilia Egorov', avatar: 'default', flagged: true, status: 'NEW', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To an account in USD (Airwallex, personal)', methodLink: false, amount: 5600 },
+  { id: 5, user: 'KONTORA GAMES LLC', avatar: 'default', flagged: false, status: 'IN PROCESSING (AUTO)', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'Tether TRC20 – USDT', methodLink: false, amount: 46800 },
+  { id: 6, user: 'Ilia Egorov', avatar: 'default', flagged: true, status: 'REJECTED', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To an account in USD (Airwallex, personal)', methodLink: false, amount: 5600 },
   { id: 7, user: 'Rishabh Singh', avatar: 'default', flagged: false, status: 'NEW', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'PayPal – USD', methodLink: true, amount: 940 },
   { id: 8, user: 'Aiturgan Abdrazakova', avatar: 'photo-a', flagged: false, status: 'CONFIRMED', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To a card in USD (Paysend)', methodLink: true, amount: 730 },
-  { id: 9, user: 'HFL Communication company', avatar: 'default', flagged: false, status: 'NEW', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To an account in USD (Airwallex)', methodLink: true, amount: 168400 },
+  { id: 9, user: 'HFL Communication company', avatar: 'default', flagged: false, status: 'IN PROCESSING', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To an account in USD (Airwallex)', methodLink: true, amount: 168400 },
   { id: 10, user: 'Hong Jie Lee', avatar: 'default', flagged: false, status: 'NEW', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To a card in USD (Paysend)', methodLink: true, amount: 21500 },
-  { id: 11, user: 'SETEL', avatar: 'default', flagged: false, status: 'NEW', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To an account in USD (Airwallex)', methodLink: true, amount: 62700 },
-  { id: 12, user: 'Shine Image Culture Limited', avatar: 'default', flagged: false, status: 'NEW', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To an account in USD (Airwallex)', methodLink: true, amount: 109800 },
+  { id: 11, user: 'SETEL', avatar: 'default', flagged: false, status: 'CONFIRMED', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To an account in USD (Airwallex)', methodLink: true, amount: 62700 },
+  { id: 12, user: 'Shine Image Culture Limited', avatar: 'default', flagged: false, status: 'REJECTED BY API', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To an account in USD (Airwallex)', methodLink: true, amount: 109800 },
   { id: 13, user: 'Alikhan Zhapayev', avatar: 'default', flagged: false, status: 'CONFIRMED', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'To a card in USD (Paysend)', methodLink: true, amount: 1480 },
-  { id: 14, user: 'Van Nghia Le', avatar: 'default', flagged: true, status: 'NEW', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'Tether TRC20 – USDT', methodLink: false, amount: 3260 },
+  { id: 14, user: 'Van Nghia Le', avatar: 'default', flagged: true, status: 'IN PROCESSING (AUTO)', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'Tether TRC20 – USDT', methodLink: false, amount: 3260 },
   { id: 15, user: 'Esttik Associate', avatar: 'photo-c', flagged: false, status: 'NEW', express: true, created: '2026-09-04', updated: '2026-09-04', method: 'To an account in EUR (Payoneer)', methodLink: true, amount: 17900 },
   { id: 16, user: 'FERNANDO GABRIEL ROMERO', avatar: 'photo-b', flagged: false, status: 'CONFIRMED', express: false, created: '2026-09-04', updated: '2026-09-04', method: 'Tether ERC20 – USDT', methodLink: true, amount: 12640 },
 ]
@@ -508,6 +508,8 @@ const filterConditions = [
   { key: 'is', label: 'Is' },
   { key: 'is-not', label: 'Is not' },
 ]
+
+const statusSlug = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 
 const titleCase = (value) => value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
 
@@ -1393,7 +1395,7 @@ function TransactionsPage({ region }) {
                       {item.flagged && <Info size={14} className="flagged-icon" />}
                     </div>
                   </td>
-                  <td><span className={`status-pill ${item.status.toLowerCase()}`}>{item.status}</span></td>
+                  <td><span className={`status-pill ${statusSlug(item.status)}`}>{item.status}</span></td>
                   <td>{item.express ? 'Yes' : 'No'}</td>
                   <td className="sent-cell">{formatSentDate(item.created)}</td>
                   <td className="sent-cell">{formatSentDate(item.updated)}</td>
