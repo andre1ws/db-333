@@ -65,13 +65,14 @@ button { border: 0; cursor: pointer; color: inherit; }
   border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;
 }
 .topbar {
-  min-height: 60px; border-bottom: 1px solid var(--border); padding: 12px 18px;
-  display: flex; align-items: center; gap: 16px;
+  border-bottom: 1px solid var(--border); padding: 12px 18px;
+  display: flex; flex-direction: column; gap: 12px;
   position: sticky; top: 0; background: var(--surface); z-index: 10;
 }
-.workspace { flex: 0 0 auto; display: flex; align-items: center; gap: 10px; font-size: 14px; }
-/* the slot page toolbars portal into */
-.header-tools { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; }
+.workspace { min-height: 34px; display: flex; align-items: center; gap: 10px; font-size: 14px; }
+/* the slot page toolbars portal into — always a row of its own */
+.header-tools { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.header-tools:empty { display: none; }
 .header-breadcrumb { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 13px; }
 .header-breadcrumb strong { color: var(--text); font-weight: 600; letter-spacing: -.2px; }
 .header-breadcrumb svg { color: var(--text-faint); }
@@ -108,12 +109,6 @@ button { transition: .18s ease; }
   .backdrop { display: block; position: fixed; z-index: 15; inset: 0; background: rgba(22, 25, 31, .38); backdrop-filter: blur(2px); }
   .menu-button { display: grid; }
   .main { margin: 0; border: 0; border-radius: 0; }
-}
-
-@media (max-width: 1080px) {
-  .header-tools { flex-wrap: wrap; }
-  .topbar { flex-wrap: wrap; row-gap: 10px; }
-  .header-tools { flex-basis: 100%; }
 }
 
 @media (max-width: 720px) {
