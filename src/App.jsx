@@ -6,7 +6,7 @@ import {
   CreditCard, Download, ExternalLink, FileDown, FilePlus2, FileText, Handshake, ImagePlus, Info, Landmark,
   Menu, MessageCircle, MessagesSquare, Monitor, Pencil, PlaySquare, Plus,
   Receipt, RefreshCw, Rocket, ScanFace, Search, SlidersHorizontal, Smartphone,
-  Trash2, TrendingUp, UserRound, Users, Video, Wallet, X, Zap,
+  Trash2, TrendingUp, Users, Video, Wallet, X, Zap,
 } from 'lucide-react'
 import './App.css'
 
@@ -766,14 +766,25 @@ function Sidebar({ open, onClose, active, setActive }) {
   )
 }
 
+/* The figure from the supplied Avatar.svg. Its violet disc is left to
+   .user-avatar.placeholder, which carries the same #8756FF and keeps the
+   shape each size calls for. */
+function AvatarGlyph() {
+  return (
+    <svg viewBox="0 0 32 32" className="avatar-glyph" aria-hidden="true">
+      <path d="M10.2487 12.3803C10.2487 9.22439 12.8237 6.66602 16 6.66602C19.1764 6.66602 21.7514 9.22439 21.7514 12.3803V13.1422C21.7514 16.2981 19.1764 18.8565 16 18.8565C12.8237 18.8565 10.2487 16.2981 10.2487 13.1422V12.3803Z" fill="currentColor" />
+      <path d="M26.6667 26.0512C24.0066 28.8903 20.212 30.666 16 30.666C11.788 30.666 7.99348 28.8903 5.33337 26.0512C7.44511 23.2886 11.4309 21.5232 16 21.5232C20.5692 21.5232 24.555 23.2886 26.6667 26.0512Z" fill="currentColor" />
+    </svg>
+  )
+}
+
 function UserAvatar({ name, variant, size = 'sm' }) {
-  const iconSize = size === 'lg' ? 48 : 22
   if (variant?.startsWith('photo')) {
     return <span className={`user-avatar photo ${variant} ${size}`}>{name.slice(0, 1)}</span>
   }
   return (
     <span className={`user-avatar placeholder ${size}`}>
-      <UserRound size={iconSize} strokeWidth={1.5} fill="currentColor" />
+      <AvatarGlyph />
     </span>
   )
 }

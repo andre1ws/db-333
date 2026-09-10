@@ -405,6 +405,8 @@ button { transition: .18s ease; }
 .user-avatar.placeholder {
   color: #fff; background: var(--accent);
 }
+/* the glyph fills its box, so it scales with the avatar at any size */
+.avatar-glyph { display: block; width: 100%; height: 100%; }
 .user-avatar.photo {
   color: #fff; font-size: 12px; font-weight: 600;
 }
