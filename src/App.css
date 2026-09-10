@@ -547,12 +547,28 @@ button { transition: .18s ease; }
 /* Labels: a divider after the name column, CSP chips with an overflow count */
 .labels-table { min-width: 900px; }
 .labels-table th:first-child, .labels-table td:first-child { border-right: 1px solid var(--border); }
-.labels-table td { height: 46px; font-size: 12.5px; }
-/* only four columns, so pin the narrow ones and let CSP absorb the slack —
+/* no fixed height — the row grows with its chips when they wrap */
+.labels-table td { height: auto; padding: 9px 12px; font-size: 12.5px; }
+/* few columns, so pin the narrow ones and let CSP absorb the slack —
    otherwise every column stretches and the rows read as empty */
-.labels-table th:first-child, .labels-table td:first-child { width: 200px; }
+.labels-table th:first-child, .labels-table td:first-child { width: 220px; }
 .labels-table th:nth-child(3), .labels-table td:nth-child(3) { width: 220px; }
-.labels-table th:last-child, .labels-table td:last-child { width: 120px; }
+.labels-table th:nth-child(4), .labels-table td:nth-child(4) { width: 120px; }
+.labels-table th:last-child, .labels-table td:last-child { width: 56px; }
+
+/* row actions, revealed on hover */
+.label-name-cell { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.row-actions { display: inline-flex; align-items: center; gap: 2px; opacity: 0; transition: opacity .14s ease; }
+.labels-table tbody tr:hover .row-actions,
+.labels-table tbody tr:focus-within .row-actions { opacity: 1; }
+.row-action {
+  width: 26px; height: 26px; flex: 0 0 26px; display: grid; place-items: center;
+  border-radius: var(--r-sm); background: transparent; color: var(--text-muted);
+}
+.row-action:hover { background: var(--surface-3); color: var(--text); }
+.row-action svg { display: block; }
+.row-action-cell { text-align: right; }
+.row-action-cell .row-actions { justify-content: flex-end; }
 .csp-cell { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .csp-cell .role-pill { max-width: none; font-size: 11px; }
 .csp-more { color: var(--text-muted); font-size: 11px; font-weight: 500; }
