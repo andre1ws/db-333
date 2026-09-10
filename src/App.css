@@ -125,7 +125,7 @@ button { transition: .18s ease; }
 .content-wide { max-width: 1400px; }
 
 .users-page, .promotions-page { flex: 1; min-height: 0; display: flex; flex-direction: column; }
-.users-panel { padding: 12px 12px 8px; overflow: hidden; flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.users-panel { padding: 12px 12px 8px; overflow: hidden; flex: 0 1 auto; min-height: 0; display: flex; flex-direction: column; }
 /* toolbar controls are pills, as in the reference */
 .users-search {
   flex: 1; min-width: 220px; max-width: 420px; height: 34px;
@@ -286,7 +286,7 @@ button { transition: .18s ease; }
   background: var(--accent-tint); color: var(--accent-ink);
   font-family: var(--font-mono); font-size: 10px; font-weight: 600;
 }
-.users-table-wrap { overflow: auto; flex: 1; min-height: 140px; }
+.users-table-wrap { overflow: auto; flex: 1; min-height: 0; }
 .users-table {
   width: 100%; border-collapse: collapse; min-width: 860px;
 }
@@ -524,8 +524,8 @@ button { transition: .18s ease; }
 }
 .archive-button svg { color: var(--text-muted); }
 .archive-button:hover { background: var(--surface-2); color: var(--text); }
-.promotions-panel { padding: 0; overflow: hidden; flex: 1; min-height: 0; display: flex; flex-direction: column; }
-.promotions-table-wrap { overflow: auto; flex: 1; min-height: 140px; }
+.promotions-panel { padding: 0; overflow: hidden; flex: 0 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.promotions-table-wrap { overflow: auto; flex: 1; min-height: 0; }
 .promotions-table { width: 100%; min-width: 850px; border-collapse: collapse; }
 .promotions-table th {
   padding: 10px 12px; text-align: left;
