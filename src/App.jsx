@@ -1925,6 +1925,12 @@ function App() {
             ) : (
               <strong>{active}</strong>
             )}
+            <div className="header-account">
+              <button className="language">EN <ChevronDown size={14} /></button>
+              <button className="brand-mark" aria-label="Workspace">
+                <Zap size={16} strokeWidth={1.5} fill="currentColor" />
+              </button>
+            </div>
           </div>
           <div className="header-tools" ref={setHeaderSlot} />
         </header>
