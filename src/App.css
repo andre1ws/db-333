@@ -84,7 +84,7 @@ button { border: 0; cursor: pointer; color: inherit; }
 .menu-button { display: none; }
 
 .content {
-  padding: 16px 18px 18px; max-width: 1180px; width: 100%; margin: 0 auto;
+  padding: 12px 0 18px; max-width: 1180px; width: 100%; margin: 0 auto;
   flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: auto;
 }
 .primary-button {
@@ -120,7 +120,7 @@ button { transition: .18s ease; }
 .content-wide { max-width: 1400px; }
 
 .users-page, .promotions-page { flex: 1; min-height: 0; display: flex; flex-direction: column; }
-.users-panel { padding: 0; overflow: hidden; flex: 0 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.users-panel { padding: 0; border: 0; border-radius: 0; overflow: hidden; flex: 0 1 auto; min-height: 0; display: flex; flex-direction: column; }
 /* toolbar controls are pills, as in the reference */
 .users-search {
   flex: 1; min-width: 220px; max-width: 420px; height: 34px;
@@ -298,6 +298,11 @@ button { transition: .18s ease; }
   font-size: 12.5px; color: var(--text-2); vertical-align: middle;
 }
 .users-table tbody tr:last-child td { border-bottom: 0; }
+/* edge gutters match the header padding, so column one lines up with the search */
+.users-table th:first-child, .users-table td:first-child,
+.promotions-table th:first-child, .promotions-table td:first-child { padding-left: 18px; }
+.users-table th:last-child, .users-table td:last-child,
+.promotions-table th:last-child, .promotions-table td:last-child { padding-right: 18px; }
 
 .toolbar-archive { margin-left: auto; }
 .notifications-table { min-width: 940px; }
@@ -519,7 +524,7 @@ button { transition: .18s ease; }
 }
 .archive-button svg { color: var(--text-muted); }
 .archive-button:hover { background: var(--surface-2); color: var(--text); }
-.promotions-panel { padding: 0; overflow: hidden; flex: 0 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.promotions-panel { padding: 0; border: 0; border-radius: 0; overflow: hidden; flex: 0 1 auto; min-height: 0; display: flex; flex-direction: column; }
 .promotions-table-wrap { overflow: auto; flex: 1; min-height: 0; }
 .promotions-table { width: 100%; min-width: 850px; border-collapse: collapse; }
 .promotions-table th {
