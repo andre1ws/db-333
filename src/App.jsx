@@ -4,7 +4,7 @@ import {
   Archive, ArrowDown, ArrowDownUp, ArrowUp, ArrowUpDown, BadgePercent, BarChart3, CalendarDays,
   Check, ChevronDown, ChevronLeft, ChevronRight, CircleCheck, CircleDollarSign, CircleHelp, Clock, Columns3,
   CreditCard, Download, ExternalLink, FileDown, FilePlus2, FileText, Handshake, ImagePlus, Info, Landmark,
-  Menu, MessageCircle, MessagesSquare, Monitor, Pencil, PlaySquare, Plus,
+  ArrowLeftRight, Link2, Menu, MessageCircle, MessagesSquare, Monitor, Pencil, PlaySquare, Plus,
   Receipt, RefreshCw, Rocket, ScanFace, Search, SlidersHorizontal, Smartphone,
   Trash2, TrendingUp, Users, Video, Wallet, X, Zap,
 } from 'lucide-react'
@@ -45,7 +45,13 @@ const navItems = [
       { label: 'Regions' },
     ],
   },
-  { label: 'CSP', icon: Handshake, arrow: true },
+  {
+    label: 'CSP',
+    icon: Handshake,
+    children: [
+      { label: 'Partners' },
+    ],
+  },
   { label: 'Payment accounts', icon: Landmark, arrow: true },
   { label: 'Contracts', icon: Receipt },
   { label: 'Requests', icon: PlaySquare, dot: true, arrow: true },
@@ -191,6 +197,31 @@ const promotions = [
   { id: 13, name: 'How to create an offer?', segment: 'CSP', countries: 'All countries', leadsTo: 'Balance', endDate: '—', updated: '11 Mar 2026' },
   { id: 14, name: 'Offers for freelancers', segment: 'CSP', countries: 'All countries', leadsTo: 'Balance', endDate: '—', updated: '11 Mar 2026' },
 ]
+
+const partners = [
+  { id: 1, name: 'Recruiting', email: 'rk@mediacube.io', avatar: 'photo-c', link: 'main', status: 'APPROVED', volume: 368948843.05, network: 24853789.60, share: 99474.15, requests: 7947, connected: 9230, members: 2273 },
+  { id: 2, name: 'MediaCube Recruiters', email: 'root@mediacube.io', avatar: 'default', link: 'sync', status: 'APPROVED', volume: 61355111.81, network: 2445802.98, share: 2964.42, requests: 1197, connected: 1480, members: 126 },
+  { id: 3, name: 'Marketing', email: 'sol@mediacube.io', avatar: 'photo-a', link: null, status: 'APPROVED', volume: 58728849.46, network: 3590723.84, share: 912.14, requests: 1668, connected: 1876, members: 268 },
+  { id: 4, name: 'Magic Find (UFG)', email: 'david@magicfind.us', avatar: 'default', link: 'sync', status: 'APPROVED', volume: 56995130.51, network: 3858.22, share: 3245480.01, requests: 1449, connected: 1560, members: 113 },
+  { id: 5, name: '2btube', email: 'fabienne@2btube.com', avatar: 'default', link: 'sync', status: 'APPROVED', volume: 51690913.17, network: 638.67, share: 3627186.22, requests: 1420, connected: 1493, members: 109 },
+  { id: 6, name: 'Pavel Kadyrov', email: 'kad@mediacube.io', avatar: 'photo-b', link: null, status: 'APPROVED', volume: 25948558.52, network: 732702.09, share: 731802.57, requests: 134, connected: 240, members: 1 },
+  { id: 7, name: 'Zoomin', email: 'instant.games@azerion.com', avatar: 'default', link: 'sync', status: 'APPROVED', volume: 21141191.67, network: 142.99, share: 1547162.55, requests: 1394, connected: 1547, members: 65 },
+  { id: 8, name: 'Genesis', email: 'info@akatria.com', avatar: 'default', link: 'sync', status: 'APPROVED', volume: 19434816.34, network: 3270.49, share: 1810297.21, requests: 966, connected: 980, members: 66 },
+  { id: 9, name: 'THINKBIG', email: 'thinkbigcsp@gmail.com', avatar: 'photo-b', link: 'sync', status: 'APPROVED', volume: 19219836.96, network: 1662.87, share: 4271151.73, requests: 2311, connected: 2299, members: 40 },
+  { id: 10, name: 'Diwan Videos', email: 'osama@diwangroup.com', avatar: 'default', link: 'sync', status: 'APPROVED', volume: 13637190.83, network: 9018.71, share: 1974467.13, requests: 897, connected: 987, members: 21 },
+  { id: 11, name: 'KNOT', email: 'knot@2btube.com', avatar: 'default', link: null, status: 'APPROVED', volume: 13422807.67, network: 0, share: 1039266.33, requests: 254, connected: 289, members: 8 },
+  { id: 12, name: 'Splay One', email: 'martin.sadik@splayone.com', avatar: 'default', link: 'sync', status: 'APPROVED', volume: 13085241.35, network: 2163.63, share: 360557.62, requests: 634, connected: 826, members: 157 },
+  { id: 13, name: 'Thumb Media', email: 'miguel.sabino@thumbmedia.net', avatar: 'default', link: 'sync', status: 'APPROVED', volume: 12166689.97, network: 13270.14, share: 479754.66, requests: 705, connected: 714, members: 96 },
+  { id: 14, name: 'Dot Republic Media', email: 'president.sophep@gmail.com', avatar: 'default', link: 'sync', status: 'APPROVED', volume: 7561377.58, network: 0, share: 8868.63, requests: 211, connected: 218, members: 2 },
+  { id: 15, name: 'WildJam', email: 'ceo@wildjam.ru', avatar: 'default', link: null, status: 'APPROVED', volume: 6159878.71, network: 307315.26, share: 307314.46, requests: 35, connected: 55, members: 1 },
+  { id: 16, name: 'Vitaly Yaroshevich', email: 'vy@mediacube.io', avatar: 'photo-d', link: null, status: 'APPROVED', volume: 5252135.95, network: 240939.68, share: 239731.55, requests: 95, connected: 124, members: 7 },
+  { id: 17, name: 'Bzzz Entertainment', email: 'bzzztvonline@gmail.com', avatar: 'default', link: null, status: 'APPROVED', volume: 4398986.68, network: 0, share: 1078018.25, requests: 463, connected: 450, members: 29 },
+  { id: 18, name: 'Dughero', email: 'paolo.dughero@gmail.com', avatar: 'default', link: 'sync', status: 'APPROVED', volume: 3444358.95, network: 0, share: 493046.08, requests: 70, connected: 85, members: 0 },
+  { id: 19, name: 'GT Channel', email: 'adrian@gtchannel.com', avatar: 'default', link: 'sync', status: 'APPROVED', volume: 3349453.21, network: 165.16, share: 113306.24, requests: 180, connected: 196, members: 6 },
+  { id: 20, name: 'IN-SANE', email: 'insane@mediacube.io', avatar: 'default', link: 'sync', status: 'APPROVED', volume: 3189720.03, network: 0, share: 855948.80, requests: 302, connected: 140, members: 3 },
+]
+
+const mainPartners = 931
 
 const labels = [
   { id: 1, name: 'Horyx', csp: ['Horyx'], more: 0, domain: 'app.horyx.com', app: false },
@@ -559,6 +590,11 @@ const promotionFilterFields = buildFilterFields(promotions, [
   { key: 'leadsTo', label: 'Button leads to', read: (item) => item.leadsTo },
   { key: 'endDate', label: 'End date', read: (item) => item.endDate },
   { key: 'updated', label: 'Date of last update', read: (item) => item.updated },
+])
+
+const partnerFilterFields = buildFilterFields(partners, [
+  { key: 'status', label: 'Status', read: (item) => item.status, format: titleCase },
+  { key: 'link', label: 'Connection', read: (item) => item.link, format: titleCase },
 ])
 
 const labelFilterFields = buildFilterFields(labels, [
@@ -1306,6 +1342,9 @@ function NotificationsPage({ draft, setDraft }) {
 
 const money = (value) => `$${value.toLocaleString('en-US', { minimumFractionDigits: 2 })}`
 
+const amount = (value) => value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+const count = (value) => value.toLocaleString('en-US')
+
 function TransactionsPage({ region }) {
   const [query, setQuery] = useState('')
   const [sort, setSort] = useState({ key: 'created', dir: 'desc' })
@@ -1896,6 +1935,205 @@ function LabelsPage({ draft, setDraft }) {
   )
 }
 
+function PartnerModal({ partner, onClose }) {
+  const isEditing = Boolean(partner)
+  const [name, setName] = useState(partner?.name ?? '')
+  const [email, setEmail] = useState(partner?.email ?? '')
+  const [isMain, setIsMain] = useState(partner?.link === 'main')
+
+  return (
+    <div className="side-modal-backdrop" onMouseDown={onClose}>
+      <aside className="side-modal" onMouseDown={(event) => event.stopPropagation()}>
+        <header>
+          <h2>{isEditing ? 'Edit partner' : 'Add a partner'}</h2>
+          <button className="icon-button" onClick={onClose} aria-label="Close partner"><X size={18} /></button>
+        </header>
+
+        <div className="modal-form">
+          <section className="modal-section">
+            <h3>Partner</h3>
+            <label className="form-field">
+              <span>Partner name</span>
+              <input
+                className="standalone-input"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                placeholder="How the partner is shown in the list"
+              />
+            </label>
+            <label className="form-field">
+              <span>Email</span>
+              <input
+                className="standalone-input"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="partner@example.com"
+              />
+            </label>
+          </section>
+
+          <section className="modal-section modal-section-grid">
+            <FormField label="Status" placeholder={partner?.status ?? 'Select a status'} />
+            <FormField label="Period" placeholder="Select period" icon={CalendarDays} />
+          </section>
+
+          <section className="modal-section">
+            <h3>Connection</h3>
+            <label className="toggle-row">
+              <input type="checkbox" checked={isMain} onChange={(event) => setIsMain(event.target.checked)} />
+              <span className="toggle" />
+              Main partner
+            </label>
+          </section>
+        </div>
+
+        <footer>
+          <button className="primary-button" onClick={onClose}>{isEditing ? 'Save changes' : 'Add'}</button>
+          <button className="secondary-button" onClick={onClose}>Cancel</button>
+        </footer>
+      </aside>
+    </div>
+  )
+}
+
+function PartnersPage({ draft, setDraft }) {
+  const [query, setQuery] = useState('')
+  const [sort, setSort] = useState({ key: 'volume', dir: 'desc' })
+  const filters = useFilters(partnerFilterFields, 'voiceon.partners.filter-presets')
+
+  const toggleSort = (key) =>
+    setSort((current) => ({ key, dir: current.key === key && current.dir === 'desc' ? 'asc' : 'desc' }))
+
+  const visible = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    const matched = q
+      ? partners.filter((item) => [item.name, item.email].some((field) => field.toLowerCase().includes(q)))
+      : partners
+    return [...filters.apply(matched)].sort((a, b) => {
+      const [left, right] = sort.dir === 'desc' ? [b, a] : [a, b]
+      const value = left[sort.key]
+      return typeof value === 'number' ? value - right[sort.key] : String(value).localeCompare(String(right[sort.key]))
+    })
+  }, [query, sort, filters.applied])
+
+  const totals = visible.reduce((sum, item) => ({
+    volume: sum.volume + item.volume,
+    network: sum.network + item.network,
+    share: sum.share + item.share,
+    requests: sum.requests + item.requests,
+    connected: sum.connected + item.connected,
+    members: sum.members + item.members,
+  }), { volume: 0, network: 0, share: 0, requests: 0, connected: 0, members: 0 })
+
+  const SortHeader = ({ label, sortKey }) => (
+    <button className="th-sort th-sort-button" onClick={() => toggleSort(sortKey)}>
+      {sort.key === sortKey
+        ? (sort.dir === 'desc' ? <ArrowDown size={12} /> : <ArrowUp size={12} />)
+        : <ArrowUpDown size={12} className="th-sort-idle" />}
+      {label}
+    </button>
+  )
+
+  return (
+    <div className="users-page">
+      <HeaderTools>
+        <label className="users-search">
+          <Search size={16} />
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Partner name or email"
+          />
+        </label>
+        <FilterBar filters={filters} />
+        <div className="users-toolbar-actions">
+          <label className="users-search period-picker">
+            <CalendarDays size={16} />
+            <input placeholder="Select period" readOnly />
+          </label>
+          <button className="count-button">
+            <ArrowLeftRight size={15} strokeWidth={1.7} />
+            Main partner
+            <span>{mainPartners}</span>
+          </button>
+          <button className="archive-button"><Archive size={16} /> Archive</button>
+        </div>
+      </HeaderTools>
+
+      <section className="panel users-panel">
+        <div className="users-table-wrap">
+          <table className="users-table partners-table">
+            <thead>
+              <tr>
+                <th>
+                  <span className="th-user">
+                    Partner
+                    <small>{visible.length.toLocaleString('en-US')}</small>
+                  </span>
+                </th>
+                <th>Status</th>
+                <th className="amount-column"><SortHeader label="Volume, $" sortKey="volume" /></th>
+                <th className="amount-column"><SortHeader label="Share of the network, $" sortKey="network" /></th>
+                <th className="amount-column"><SortHeader label="Share of the partner, $" sortKey="share" /></th>
+                <th className="amount-column">Requests</th>
+                <th className="amount-column">Connected</th>
+                <th className="amount-column">Community members</th>
+              </tr>
+            </thead>
+            <tbody>
+              {visible.map((item) => (
+                <tr key={item.id} className="clickable-row" onClick={() => setDraft(item)}>
+                  <td>
+                    <div className="partner-cell">
+                      <UserAvatar name={item.name} variant={item.avatar} />
+                      <div>
+                        <strong>{item.name}</strong>
+                        <small>{item.email}</small>
+                      </div>
+                      {item.link && (
+                        <span className="partner-link" aria-label={item.link === 'main' ? 'Main partner' : 'Connected partner'}>
+                          {item.link === 'main' ? <Link2 size={15} /> : <ArrowLeftRight size={15} />}
+                        </span>
+                      )}
+                    </div>
+                  </td>
+                  <td><span className={`kyc-pill ${item.status.toLowerCase()}`}>{item.status}</span></td>
+                  <td className="amount-column">{amount(item.volume)}</td>
+                  <td className="amount-column">{amount(item.network)}</td>
+                  <td className="amount-column">{amount(item.share)}</td>
+                  <td className="amount-column">{count(item.requests)}</td>
+                  <td className="amount-column">{count(item.connected)}</td>
+                  <td className="amount-column">{count(item.members)}</td>
+                </tr>
+              ))}
+              {visible.length === 0 && (
+                <tr>
+                  <td colSpan={8} className="users-empty">No partners match your search.</td>
+                </tr>
+              )}
+            </tbody>
+            {visible.length > 0 && (
+              <tfoot>
+                <tr>
+                  <td colSpan={2}>Total</td>
+                  <td className="amount-column">{amount(totals.volume)}</td>
+                  <td className="amount-column">{amount(totals.network)}</td>
+                  <td className="amount-column">{amount(totals.share)}</td>
+                  <td className="amount-column">{count(totals.requests)}</td>
+                  <td className="amount-column">{count(totals.connected)}</td>
+                  <td className="amount-column">{count(totals.members)}</td>
+                </tr>
+              </tfoot>
+            )}
+          </table>
+        </div>
+      </section>
+
+      {draft !== undefined && <PartnerModal partner={draft} onClose={() => setDraft(undefined)} />}
+    </div>
+  )
+}
+
 function App() {
   const [active, setActive] = useState('Users')
   const [menuOpen, setMenuOpen] = useState(false)
@@ -1903,12 +2141,14 @@ function App() {
   const [notificationDraft, setNotificationDraft] = useState(undefined)
   const [promotionDraft, setPromotionDraft] = useState(undefined)
   const [labelDraft, setLabelDraft] = useState(undefined)
+  const [partnerDraft, setPartnerDraft] = useState(undefined)
 
   const changeSection = (label) => {
     setActive(label)
     setNotificationDraft(undefined)
     setPromotionDraft(undefined)
     setLabelDraft(undefined)
+    setPartnerDraft(undefined)
   }
 
   const group = findNavGroup(active)
@@ -1917,6 +2157,7 @@ function App() {
     Notifications: { label: 'New notification', run: () => setNotificationDraft(null) },
     Promotions: { label: 'New promotion', run: () => setPromotionDraft(null) },
     Labels: { label: 'New label', run: () => setLabelDraft(null) },
+    Partners: { label: 'New partner', run: () => setPartnerDraft(null) },
   }[active]
 
   return (
@@ -1959,6 +2200,9 @@ function App() {
             )}
             {active === 'Labels' && (
               <LabelsPage draft={labelDraft} setDraft={setLabelDraft} />
+            )}
+            {active === 'Partners' && (
+              <PartnersPage draft={partnerDraft} setDraft={setPartnerDraft} />
             )}
             {isTransactions && <TransactionsPage region={active.replace('Transactions ', '')} />}
           </div>
