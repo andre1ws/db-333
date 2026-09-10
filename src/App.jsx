@@ -1947,7 +1947,7 @@ function App() {
         </header>
 
         <HeaderSlotContext.Provider value={headerSlot}>
-          <div className={`content ${isTransactions || ['Users', 'Notifications', 'Promotions', 'Labels'].includes(active) ? 'content-wide' : ''}`}>
+          <div className="content">
             {active === 'Users' && <UsersPage />}
             {active === 'Notifications' && (
               <NotificationsPage draft={notificationDraft} setDraft={setNotificationDraft} />
