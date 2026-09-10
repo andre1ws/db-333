@@ -21,12 +21,15 @@
   --accent-tint: #f4efff;
   --accent-line: #cbb6ff;
 
-  /* — status — soft tint + coloured ink, never a flat fill */
+  /* — status badges — solid and saturated */
+  --status-green: #6ebf5c;
+  --status-red: #e8534a;
+  --status-amber: #f0ad2e;
+  --status-grey: #b6babf;
+
+  /* — status accents used as text and icons, not as fills — */
   --info: #4a8fe0;
   --success: #1c8a58;
-  --success-tint: #e7f4ec;
-  --warning-ink: #96650a;
-  --warning-tint: #fbeed3;
   --danger: #c4432c;
   --danger-tint: #fbedea;
   --danger-line: #f0cdc5;
