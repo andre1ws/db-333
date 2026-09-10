@@ -46,7 +46,7 @@ button { border: 0; cursor: pointer; color: inherit; }
 .nav-group-toggle { font-weight: 500; }
 .nav-subitems { display: flex; flex-direction: column; gap: 1px; margin-bottom: 2px; }
 .nav-subitem { padding-left: 38px; }
-.nav-item .nav-dot { flex: 0 0 auto; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.nav-item .nav-dot { flex: 0 0 auto; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
 
 .mc-pay-button {
   margin-top: auto; height: 38px; padding: 0 10px; display: flex; align-items: center; gap: 9px;
