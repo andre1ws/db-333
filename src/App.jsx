@@ -2084,7 +2084,7 @@ function PartnersPage({ draft, setDraft }) {
               {visible.map((item) => (
                 <tr key={item.id} className="clickable-row" onClick={() => setDraft(item)}>
                   <td>
-                    <div className="partner-cell">
+                    <div className="user-cell partner-cell">
                       <UserAvatar name={item.name} variant={item.avatar} />
                       <div>
                         <strong>{item.name}</strong>

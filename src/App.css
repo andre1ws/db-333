@@ -351,23 +351,19 @@ button { transition: .18s ease; }
   text-transform: uppercase; letter-spacing: .08em;
 }
 .transactions-table tfoot td.amount-column { text-transform: none; letter-spacing: 0; font-size: 14.5px; }
-/* Partners: a wide identity column set off from the figures beside it */
-.partners-table { min-width: 1320px; }
+/* Partners: the identity column is .user-cell like every other table —
+   this only sets its width, the divider and the connection icon */
+.partners-table { min-width: 1240px; }
 .partners-table th:first-child, .partners-table td:first-child {
-  width: 260px; border-right: 1px solid var(--border);
+  width: 300px; border-right: 1px solid var(--border);
 }
-.partners-table th:nth-child(2), .partners-table td:nth-child(2) { width: 120px; }
-.partners-table td { height: auto; padding: 8px 12px; }
-.partner-cell { display: flex; align-items: center; gap: 10px; }
+.partners-table th:nth-child(2), .partners-table td:nth-child(2) { width: 130px; }
+/* these headings are long enough to need two lines, as in the design */
+.partners-table thead th { white-space: normal; }
+.partners-table thead .th-sort { text-align: right; }
+.partner-cell { min-width: 0; }
 .partner-cell > div { min-width: 0; flex: 1; }
-.partner-cell strong {
-  display: block; font-size: 14px; font-weight: 600; letter-spacing: -.2px; color: var(--text);
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-.partner-cell small {
-  display: block; margin-top: 2px; color: var(--text-muted); font-size: 12px;
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
+.partner-cell strong, .partner-cell small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .partner-link { flex: 0 0 auto; display: grid; place-items: center; color: var(--text-faint); }
 .partners-table tbody tr:hover .partner-link { color: var(--accent); }
 /* the period field sits in the toolbar but reads as an input, not a chip */
