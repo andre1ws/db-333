@@ -2088,7 +2088,7 @@ function PartnersPage({ draft, setDraft }) {
                       )}
                     </div>
                   </td>
-                  <td><span className={`kyc-pill ${item.status.toLowerCase()}`}>{item.status}</span></td>
+                  <td><span className={`status-pill ${statusSlug(item.status)}`}>{item.status}</span></td>
                   <td className="amount-column">{amount(item.volume)}</td>
                   <td className="amount-column">{amount(item.network)}</td>
                   <td className="amount-column">{amount(item.share)}</td>

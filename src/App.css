@@ -343,13 +343,8 @@ button { transition: .18s ease; }
 /* Partners: the identity column is .user-cell like every other table —
    this only sets its width, the divider and the connection icon */
 .partners-table { min-width: 1240px; }
-.partners-table th:first-child, .partners-table td:first-child {
-  width: 300px; border-right: 1px solid var(--border);
-}
+.partners-table th:first-child, .partners-table td:first-child { width: 300px; }
 .partners-table th:nth-child(2), .partners-table td:nth-child(2) { width: 130px; }
-/* these headings are long enough to need two lines, as in the design */
-.partners-table thead th { white-space: normal; }
-.partners-table thead .th-sort { text-align: right; }
 .partner-cell { min-width: 0; }
 .partner-cell > div { min-width: 0; flex: 1; }
 .partner-cell strong, .partner-cell small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -437,7 +432,7 @@ button { transition: .18s ease; }
   border-radius: var(--r-sm); font-size: 11.5px; font-weight: 600; letter-spacing: .04em;
   color: #fff;
 }
-.kyc-pill.approved, .status-pill.confirmed { background: var(--status-green); }
+.kyc-pill.approved, .status-pill.approved, .status-pill.confirmed { background: var(--status-green); }
 .kyc-pill.blocked,
 .status-pill.rejected, .status-pill.rejected-by-api { background: var(--status-red); }
 .kyc-pill.pending, .status-pill.new { background: var(--status-amber); }
@@ -451,8 +446,6 @@ button { transition: .18s ease; }
 .action-cell svg { color: var(--text-faint); }
 /* registration date column */
 .users-table tbody td:last-child { font-variant-numeric: tabular-nums; font-size: 13.5px; color: var(--text-muted); }
-.transactions-table tbody td:last-child,
-.partners-table tbody td:last-child { font-family: var(--font-mono); font-size: 13.5px; color: var(--text); }
 .users-empty { text-align: center; color: var(--text-muted); padding: 32px 12px !important; font-family: var(--font-sans); font-size: 14px; }
 
 @media (max-width: 1080px) {
