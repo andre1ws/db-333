@@ -1072,13 +1072,15 @@ function FiltersPanel({
                 </span>
               )
             })}
-            <button className="text-link filters-clear" onClick={onClear}>Clear all</button>
           </div>
         ) : (
           <span className="filters-empty">No filters added yet</span>
         )}
 
         <div className="filters-actions">
+          {draft.length > 0 && (
+            <button className="text-link filters-clear" onClick={onClear}>Clear all</button>
+          )}
           <button className="primary-button" onClick={onApply} disabled={applyDisabled}>Apply filters</button>
           {activePreset && (
             <button className="ghost-danger" onClick={onDeletePreset}>

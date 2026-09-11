@@ -230,15 +230,17 @@ button { transition: .18s ease; }
 .filters-add:hover:not(:disabled) { background: var(--accent-soft); }
 .filters-add svg { display: block; }
 /* row two: what has been staged, and what to do with it — all on one line */
+/* the chips can run to several rows, so the label and the actions line up
+   with the first of them rather than floating in the middle of the stack */
 .filters-added {
-  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  display: flex; align-items: flex-start; gap: 10px; flex-wrap: wrap;
   margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);
 }
 .filters-added-label {
-  flex: 0 0 auto; font-size: 11.5px; font-weight: 600;
+  flex: 0 0 auto; padding-top: 7px; font-size: 11.5px; font-weight: 600;
   text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted);
 }
-.filters-empty { flex: 1; min-width: 0; font-size: 13px; color: var(--text-faint); }
+.filters-empty { flex: 1; min-width: 0; padding-top: 6px; font-size: 13px; color: var(--text-faint); }
 .filters-chip-list { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .filters-added-label + .filters-chip-list { margin-right: auto; }
 .filter-chip {
@@ -259,7 +261,7 @@ button { transition: .18s ease; }
 .filter-chip button svg { display: block; }
 .filter-chip button:hover { background: var(--accent-line); }
 .filters-clear { flex: 0 0 auto; padding: 4px 8px; font-size: 12px; }
-.filters-actions { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.filters-actions { margin-left: auto; margin-top: -4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .filters-actions .primary-button,
 .filters-actions .secondary-button,
 .filters-actions .ghost-danger { height: 37px; padding: 0 14px; border-radius: var(--r-md); }
