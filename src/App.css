@@ -392,7 +392,7 @@ button { transition: .18s ease; }
 }
 .user-drawer {
   width: 70vw; height: 100vh; background: var(--surface);
-  border-radius: 18px 0 0 18px; box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg);
   overflow-y: auto; animation: side-modal-in .22s ease-out;
 }
 .user-drawer .user-card { border: 0; border-radius: 0; box-shadow: none; }
@@ -628,7 +628,7 @@ button { transition: .18s ease; }
 }
 .side-modal {
   width: min(590px, 100vw); height: 100vh; background: var(--surface);
-  border-radius: 18px 0 0 18px; box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg);
   display: flex; flex-direction: column; overflow: hidden;
   animation: side-modal-in .22s ease-out;
 }
@@ -763,12 +763,11 @@ button { transition: .18s ease; }
 .secondary-button:hover { background: var(--border-strong); color: var(--text); }
 
 @media (max-width: 720px) {
-  .side-modal { border-radius: 0; }
   .modal-section-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 720px) {
   .profile-grid { grid-template-columns: 1fr; }
   .user-card-balance { text-align: left; margin-left: 0; width: 100%; }
-  .user-drawer { width: 100vw; border-radius: 0; }
+  .user-drawer { width: 100vw; }
 }
