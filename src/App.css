@@ -592,7 +592,6 @@ button { transition: .18s ease; }
 }
 /* Labels: a divider after the name column, CSP chips with an overflow count */
 .labels-table { min-width: 960px; }
-.labels-table th:first-child, .labels-table td:first-child { border-right: 1px solid var(--border); }
 /* no fixed height — the row grows with its chips when they wrap */
 .labels-table td { height: auto; padding: 9px 12px; font-size: 14px; }
 /* few columns, so pin the narrow ones and let CSP absorb the slack —
