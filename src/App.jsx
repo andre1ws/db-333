@@ -1008,14 +1008,10 @@ function FiltersPanel({
 }) {
   const currentField = fields.find((item) => item.key === field)
   const valueDisabled = !currentField || condition === 'empty'
+  const presetBlocked = draft.length === 0
 
   return (
-    <section className="filters-panel" role="dialog" aria-label="Filters">
-      <header className="filters-head">
-        <h3>Filters {draft.length > 0 && <small>{draft.length}</small>}</h3>
-        <button className="icon-button" onClick={onClose} aria-label="Close filters"><X size={16} /></button>
-      </header>
-
+    <section className="filters-panel" aria-label="Filters">
       <div className="filters-row">
         <label className="filters-control">
           <span>Field</span>
@@ -1056,15 +1052,14 @@ function FiltersPanel({
         <button className="filters-add" onClick={onAdd} disabled={!canAdd}>
           <Plus size={14} strokeWidth={2.2} /> Add filter
         </button>
+
+        <button className="icon-button filters-close" onClick={onClose} aria-label="Close filters">
+          <X size={16} />
+        </button>
       </div>
 
       <div className="filters-added">
-        <div className="filters-added-head">
-          <span>Added filters</span>
-          {draft.length > 0 && (
-            <button className="text-link filters-clear" onClick={onClear}>Clear all</button>
-          )}
-        </div>
+        <span className="filters-added-label">Added</span>
         {draft.length > 0 ? (
           <div className="filters-chip-list">
             {draft.map((item) => {
@@ -1077,38 +1072,36 @@ function FiltersPanel({
                 </span>
               )
             })}
+            <button className="text-link filters-clear" onClick={onClear}>Clear all</button>
           </div>
         ) : (
-          <p className="filters-empty">No filters added yet</p>
+          <span className="filters-empty">No filters added yet</span>
         )}
-      </div>
 
-      <footer className="filters-footer">
-        <button className="primary-button" onClick={onApply} disabled={applyDisabled}>Apply filters</button>
-        {activePreset && (
-          <button className="ghost-danger" onClick={onDeletePreset}>
-            <Trash2 size={13} /> Delete “{activePreset.name}”
-          </button>
-        )}
-        <div className="filters-preset">
-          <span>Create new preset</span>
-          <input
-            value={presetName}
-            onChange={(event) => onPresetNameChange(event.target.value)}
-            placeholder="Enter the preset name"
-          />
-          <button
-            className="secondary-button"
-            onClick={onSavePreset}
-            disabled={!presetName.trim() || draft.length === 0}
-          >
-            Create
-          </button>
+        <div className="filters-actions">
+          <button className="primary-button" onClick={onApply} disabled={applyDisabled}>Apply filters</button>
+          {activePreset && (
+            <button className="ghost-danger" onClick={onDeletePreset}>
+              <Trash2 size={13} /> Delete “{activePreset.name}”
+            </button>
+          )}
+          <div className="filters-preset">
+            <input
+              value={presetName}
+              onChange={(event) => onPresetNameChange(event.target.value)}
+              placeholder="Enter the preset name"
+            />
+            <button
+              className="secondary-button"
+              onClick={onSavePreset}
+              disabled={!presetName.trim() || presetBlocked}
+              title={presetBlocked ? 'Add at least one filter before saving a preset' : undefined}
+            >
+              Create preset
+            </button>
+          </div>
         </div>
-      </footer>
-      {draft.length === 0 && (
-        <p className="filters-preset-hint">Add at least one filter above before saving a preset.</p>
-      )}
+      </div>
     </section>
   )
 }

@@ -183,36 +183,24 @@ button { transition: .18s ease; }
 .preset-chip.active .preset-chip-remove:hover { background: var(--accent-line); }
 .users-toolbar-actions { margin-left: auto; display: flex; align-items: center; gap: 6px; }
 
+/* Inset from the card edges so its border does not stack on the card's own */
 .filters-panel {
-  flex: 0 0 auto; margin-bottom: 12px;
+  flex: 0 0 auto; margin: 0 18px 12px;
   border: 1px solid var(--border); border-radius: var(--r-lg); background: var(--surface);
-  padding: 14px 18px 16px; animation: filters-in .16s ease-out; box-shadow: var(--shadow-sm);
+  padding: 12px 14px 14px; animation: filters-in .16s ease-out; box-shadow: var(--shadow-sm);
 }
 @keyframes filters-in { from { opacity: 0; transform: translateY(-6px); } }
-.filters-head {
-  display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px;
-}
-/* card headings read as small letterspaced eyebrows */
-.filters-head h3 {
-  margin: 0; display: flex; align-items: center; gap: 8px;
-  font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .09em; color: var(--text-2);
-}
-.filters-head small {
-  min-width: 18px; height: 18px; padding: 0 6px; border-radius: var(--r-pill);
-  display: inline-grid; place-items: center; letter-spacing: 0;
-  background: var(--accent-tint); color: var(--accent-ink);
-  font-family: var(--font-mono); font-size: 11.5px; font-weight: 600;
-}
-.filters-head .icon-button { width: 26px; height: 26px; }
+/* row one: build a condition. Close sits here rather than in a title bar of its own */
 .filters-row {
-  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
-  gap: 12px 14px; align-items: end;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto auto;
+  gap: 10px; align-items: end;
 }
 .filters-control { display: block; min-width: 0; }
 .filters-control > span {
-  display: block; margin-bottom: 6px;
+  display: block; margin-bottom: 5px;
   font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted);
 }
+.filters-close { align-self: end; }
 .filter-select { position: relative; display: block; }
 .filter-select select {
   width: 100%; height: 34px; padding: 0 32px 0 12px; border-radius: var(--r-md);
@@ -233,7 +221,7 @@ button { transition: .18s ease; }
 .segmented button.active { background: var(--surface); color: var(--text); font-weight: 600; box-shadow: var(--shadow-sm); }
 /* staging a filter is an explicit step, so it gets its own control */
 .filters-add {
-  height: 34px; padding: 0 16px; white-space: nowrap;
+  height: 34px; padding: 0 14px; white-space: nowrap;
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   border: 1px solid var(--accent-line); border-radius: var(--r-md);
   background: var(--accent-tint); color: var(--accent-ink);
@@ -241,19 +229,18 @@ button { transition: .18s ease; }
 }
 .filters-add:hover:not(:disabled) { background: var(--accent-soft); }
 .filters-add svg { display: block; }
-.filters-added { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
-.filters-added-head {
-  display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px;
-  font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted);
+/* row two: what has been staged, and what to do with it — all on one line */
+.filters-added {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);
 }
-.filters-added-head .text-link {
-  padding: 2px 6px; font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em;
+.filters-added-label {
+  flex: 0 0 auto; font-size: 11.5px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted);
 }
-.filters-empty {
-  margin: 0; padding: 12px; border-radius: var(--r-md); background: var(--surface-2);
-  border: 1px solid var(--border); color: var(--text-muted); font-size: 13.5px; text-align: center;
-}
-.filters-chip-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.filters-empty { flex: 1; min-width: 0; font-size: 13px; color: var(--text-faint); }
+.filters-chip-list { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.filters-added-label + .filters-chip-list { margin-right: auto; }
 .filter-chip {
   display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 5px 0 4px;
   border-radius: var(--r-pill); background: var(--accent-tint); color: var(--accent-ink); font-size: 13px;
@@ -271,24 +258,18 @@ button { transition: .18s ease; }
 }
 .filter-chip button svg { display: block; }
 .filter-chip button:hover { background: var(--accent-line); }
-.filters-clear { flex: 0 0 auto; }
-.filters-footer {
-  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border);
-}
-.filters-footer .ghost-danger { display: inline-flex; align-items: center; gap: 6px; }
-.filters-preset { margin-left: auto; display: flex; align-items: center; gap: 8px; }
-.filters-preset > span { font-size: 13px; color: var(--text-muted); white-space: nowrap; }
-.filters-preset-hint { margin: 10px 0 0; font-size: 12px; color: var(--text-faint); }
-.filters-footer .primary-button,
-.filters-footer .secondary-button,
-.filters-footer .ghost-danger { height: 32px; padding: 0 14px; border-radius: var(--r-md); }
+.filters-clear { flex: 0 0 auto; padding: 4px 8px; font-size: 12px; }
+.filters-actions { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.filters-actions .primary-button,
+.filters-actions .secondary-button,
+.filters-actions .ghost-danger { height: 34px; padding: 0 14px; border-radius: var(--r-md); }
+.filters-actions .ghost-danger { display: inline-flex; align-items: center; gap: 6px; }
+.filters-preset { display: flex; align-items: center; gap: 8px; }
 .filters-preset input {
-  height: 32px; width: 210px; padding: 0 12px; border-radius: var(--r-md);
-  border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); font-size: 14px; outline: 0;
+  height: 34px; width: 190px; padding: 0 12px; border-radius: var(--r-md);
+  border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); font-size: 13px; outline: 0;
 }
 .filters-preset input:focus { border-color: var(--accent-line); box-shadow: var(--ring); }
-.filters-preset .secondary-button { display: inline-flex; align-items: center; gap: 6px; }
 .filters-panel button:disabled { opacity: .45; cursor: not-allowed; }
 .filters-panel .primary-button:disabled:hover { background: var(--accent); }
 .kyc-button, .count-button {
@@ -474,11 +455,13 @@ button { transition: .18s ease; }
 .partners-table tbody td:last-child { font-family: var(--font-mono); font-size: 13.5px; color: var(--text); }
 .users-empty { text-align: center; color: var(--text-muted); padding: 32px 12px !important; font-family: var(--font-sans); font-size: 14px; }
 
-@media (max-width: 980px) {
-  .filters-row { grid-template-columns: 1fr; align-items: stretch; }
-  .filters-add { width: 100%; justify-content: center; }
-  .filters-preset { margin-left: 0; width: 100%; flex-wrap: wrap; }
-  .filters-preset input { flex: 1; width: auto; min-width: 140px; }
+@media (max-width: 1080px) {
+  .filters-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .filters-close { grid-column: 2; grid-row: 1; justify-self: end; }
+  .filters-add { grid-column: 1 / -1; }
+  .filters-actions { margin-left: 0; width: 100%; }
+  .filters-preset { flex: 1; }
+  .filters-preset input { flex: 1; width: auto; min-width: 120px; }
 }
 
 @media (max-width: 720px) {
