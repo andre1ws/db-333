@@ -291,7 +291,7 @@ button { transition: .18s ease; }
   width: 100%; border-collapse: collapse; min-width: 920px;
 }
 .users-table th {
-  text-align: left; font-size: 14px; font-weight: 600; color: var(--text);
+  text-align: left; font-size: 14px; font-weight: 800; color: var(--text);
   padding: 12px 10px; white-space: nowrap;
 }
 .users-table thead th, .promotions-table thead th {
@@ -564,7 +564,7 @@ button { transition: .18s ease; }
 .promotions-table { width: 100%; min-width: 910px; border-collapse: collapse; }
 .promotions-table th {
   padding: 12px 10px; text-align: left;
-  color: var(--text); font-size: 14px; font-weight: 600; white-space: nowrap;
+  color: var(--text); font-size: 14px; font-weight: 800; white-space: nowrap;
 }
 .promotions-table td {
   height: 42px; padding: 6px 10px; border-bottom: 1px solid var(--border);
