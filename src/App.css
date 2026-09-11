@@ -21,7 +21,7 @@ button { border: 0; cursor: pointer; color: inherit; }
 .brand { font-size: 22px; font-weight: 700; letter-spacing: -.7px; color: var(--text); }
 .close-sidebar { display: none !important; }
 .nav-item {
-  width: 100%; height: 34px; display: flex; gap: 10px; align-items: center; padding: 0 10px;
+  width: 100%; height: 38px; display: flex; gap: 10px; align-items: center; padding: 0 10px;
   background: transparent; border: 1px solid transparent; border-radius: var(--r-md);
   color: var(--text-2); font-size: 14px; text-align: left; letter-spacing: -.1px;
 }
@@ -42,9 +42,9 @@ button { border: 0; cursor: pointer; color: inherit; }
 }
 .nav-arrow { margin-left: auto; transition: transform .15s ease; }
 .nav-arrow.open { transform: rotate(180deg); }
-.nav-title { margin: 12px 10px 4px; font-size: 12.5px; color: var(--text-muted); }
+.nav-title { margin: 16px 10px 6px; font-size: 12.5px; color: var(--text-muted); }
 .nav-group-toggle { font-weight: 500; }
-.nav-subitems { display: flex; flex-direction: column; gap: 1px; margin-bottom: 2px; }
+.nav-subitems { display: flex; flex-direction: column; gap: 2px; margin-bottom: 4px; }
 .nav-subitem { padding-left: 38px; }
 .nav-item .nav-dot { flex: 0 0 auto; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
 
