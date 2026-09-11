@@ -712,18 +712,15 @@ function useFilters(fields, storageKey) {
       value,
       activePreset: presets.find((item) => item.id === activePresetId),
       applyDisabled: sameFilters(draft, applied),
+      canAdd: Boolean(field) && (condition === 'empty' || Boolean(value)),
       presetName,
-      onFieldChange: (next) => {
-        setField(next)
+      onFieldChange: (next) => { setField(next); setValue('') },
+      onConditionChange: (next) => { setCondition(next); setValue('') },
+      onValueChange: setValue,
+      onAdd: () => {
+        addFilter(field, condition, value)
         setValue('')
-        if (next && condition === 'empty') addFilter(next, 'empty', '')
       },
-      onConditionChange: (next) => {
-        setCondition(next)
-        setValue('')
-        if (field && next === 'empty') addFilter(field, 'empty', '')
-      },
-      onValueChange: (next) => { if (next) addFilter(field, condition, next) },
       onRemove: (id) => setDraft((current) => current.filter((item) => item.id !== id)),
       onClear: () => setDraft([]),
       onClose: () => setPanelOpen(false),
@@ -1016,7 +1013,7 @@ function FilterBar({ filters }) {
 }
 
 function FiltersPanel({
-  fields, draft, field, condition, value, activePreset,
+  fields, draft, field, condition, value, activePreset, canAdd, onAdd,
   onFieldChange, onConditionChange, onValueChange, onRemove, onClear, onClose,
   onApply, applyDisabled, presetName, onPresetNameChange, onSavePreset, onDeletePreset,
 }) {
@@ -1067,6 +1064,10 @@ function FiltersPanel({
           />
         </label>
       </div>
+
+      <button className="filters-add" onClick={onAdd} disabled={!canAdd}>
+        <Plus size={14} strokeWidth={2.2} /> Add filter
+      </button>
 
       <div className="filters-added">
         <div className="filters-added-head">
