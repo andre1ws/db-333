@@ -74,7 +74,7 @@ button { border: 0; cursor: pointer; color: inherit; }
 .workspace { min-height: 30px; display: flex; align-items: center; gap: 10px; font-size: 15.5px; }
 /* the slot page toolbars portal into — always a row of its own */
 .header-tools { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.header-tools .icon-button { width: 35px; height: 35px; }
+.header-tools .icon-button { width: 40px; height: 40px; }
 .header-tools:empty { display: none; }
 .header-breadcrumb { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 14.5px; }
 .header-breadcrumb strong { color: var(--text); font-weight: 600; letter-spacing: -.2px; }
@@ -139,7 +139,7 @@ button { transition: .18s ease; }
 .users-panel { padding: 0; border: 0; border-radius: 0; overflow: hidden; flex: 0 1 auto; min-height: 0; display: flex; flex-direction: column; }
 /* toolbar controls are pills, as in the reference */
 .users-search {
-  flex: 1; min-width: 220px; max-width: 420px; height: 35px;
+  flex: 1; min-width: 220px; max-width: 420px; height: 40px;
   display: flex; align-items: center; gap: 8px; padding: 0 14px;
   border: 1px solid var(--border); border-radius: var(--r-pill); background: var(--surface);
   color: var(--text-muted); box-shadow: var(--shadow-sm);
@@ -165,7 +165,7 @@ button { transition: .18s ease; }
   display: grid; place-items: center; border: 2px solid var(--surface);
 }
 .preset-chip {
-  height: 35px; padding: 0 6px 0 14px; border-radius: var(--r-pill); border: 1px solid var(--border);
+  height: 40px; padding: 0 8px 0 16px; border-radius: var(--r-pill); border: 1px solid var(--border);
   background: var(--surface); color: var(--text-2); font-size: 13px; font-weight: 500; white-space: nowrap;
   display: inline-flex; align-items: center; gap: 7px; box-shadow: var(--shadow-sm);
 }
@@ -273,7 +273,7 @@ button { transition: .18s ease; }
 .filters-panel button:disabled { opacity: .45; cursor: not-allowed; }
 .filters-panel .primary-button:disabled:hover { background: var(--accent); }
 .kyc-button, .count-button {
-  height: 35px; padding: 0 13px 0 12px; border-radius: var(--r-pill);
+  height: 40px; padding: 0 15px 0 14px; border-radius: var(--r-pill);
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--surface); border: 1px solid var(--border); color: var(--text-2); font-size: 13px;
   font-weight: 500; box-shadow: var(--shadow-sm);
@@ -564,7 +564,7 @@ button { transition: .18s ease; }
 
 
 .archive-button {
-  height: 35px; padding: 0 12px; border-radius: var(--r-pill); display: inline-flex;
+  height: 40px; padding: 0 14px; border-radius: var(--r-pill); display: inline-flex;
   align-items: center; gap: 7px; background: var(--surface); border: 1px solid var(--border);
   color: var(--text-2); font-size: 13px; font-weight: 500; box-shadow: var(--shadow-sm);
 }
