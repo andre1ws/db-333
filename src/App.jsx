@@ -840,13 +840,13 @@ function UserCard({ user, onBack }) {
   return (
     <section className="panel user-card">
       <div className="user-card-nav">
-        <button className="text-link" onClick={onBack}><ChevronLeft size={15} /> Back to list</button>
+        <button className="text-link" onClick={onBack}><ChevronLeft size={16} /> Back to list</button>
         <div className="user-card-actions">
-          <button className="text-link"><RefreshCw size={14} /> To company</button>
-          <button className="text-link"><Plus size={14} /> Add channel</button>
-          <button className="text-link"><Pencil size={14} /> Edit data</button>
-          <button className="text-link"><Clock size={14} /> History</button>
-          <button className="text-link"><MessageCircle size={14} /> Chat</button>
+          <button className="text-link"><RefreshCw size={16} /> To company</button>
+          <button className="text-link"><Plus size={16} /> Add channel</button>
+          <button className="text-link"><Pencil size={16} /> Edit data</button>
+          <button className="text-link"><Clock size={16} /> History</button>
+          <button className="text-link"><MessageCircle size={16} /> Chat</button>
         </div>
       </div>
 
@@ -915,13 +915,13 @@ function UserCard({ user, onBack }) {
               <Field label="Last action">
                 <span className="action-cell">
                   {profile.lastAction}
-                  {profile.device === 'mobile' ? <Smartphone size={14} /> : <Monitor size={14} />}
+                  {profile.device === 'mobile' ? <Smartphone size={17} /> : <Monitor size={17} />}
                 </span>
               </Field>
               <Field label="Last action in the app">
                 <span className="action-cell">
                   {profile.lastActionApp}
-                  <Smartphone size={14} />
+                  <Smartphone size={17} />
                 </span>
               </Field>
             </div>
@@ -930,7 +930,7 @@ function UserCard({ user, onBack }) {
           <div className="profile-card">
             <div className="profile-section-head">
               <h3>Roles</h3>
-              <button className="icon-button" aria-label="Edit roles"><Pencil size={14} /></button>
+              <button className="icon-button" aria-label="Edit roles"><Pencil size={16} /></button>
             </div>
             {profile.role ? <span className="role-pill">{profile.role}</span> : <p className="muted">No roles assigned</p>}
           </div>
@@ -938,7 +938,7 @@ function UserCard({ user, onBack }) {
           <div className="profile-card">
             <div className="profile-section-head">
               <h3>Fintech</h3>
-              <button className="icon-button" aria-label="Edit fintech"><Pencil size={14} /></button>
+              <button className="icon-button" aria-label="Edit fintech"><Pencil size={16} /></button>
             </div>
             <p className="muted">No fintech settings</p>
           </div>
@@ -1200,8 +1200,8 @@ function UsersPage() {
                     <span className="action-cell">
                       {user.lastAction}
                       {user.device === 'mobile'
-                        ? <Smartphone size={14} strokeWidth={2} />
-                        : <Monitor size={14} strokeWidth={2} />}
+                        ? <Smartphone size={17} strokeWidth={2} />
+                        : <Monitor size={17} strokeWidth={2} />}
                     </span>
                   </td>
                   <td>{user.registered}</td>
@@ -1417,7 +1417,7 @@ function TransactionsPage({ region }) {
                     <div className="user-cell transaction-user">
                       <UserAvatar name={item.user} variant={item.avatar} />
                       <strong>{item.user}</strong>
-                      {item.flagged && <Info size={14} className="flagged-icon" />}
+                      {item.flagged && <Info size={17} className="flagged-icon" />}
                     </div>
                   </td>
                   <td><span className={`status-pill ${statusSlug(item.status)}`}>{item.status}</span></td>
@@ -1876,21 +1876,21 @@ function LabelsPage({ draft, setDraft }) {
                           aria-label={`Edit ${item.name}`}
                           onClick={(event) => { event.stopPropagation(); setDraft(item) }}
                         >
-                          <Pencil size={14} />
+                          <Pencil size={17} />
                         </button>
                         <button
                           className="row-action"
                           aria-label={`Open ${item.domain}`}
                           onClick={(event) => event.stopPropagation()}
                         >
-                          <ExternalLink size={14} />
+                          <ExternalLink size={17} />
                         </button>
                         <button
                           className="row-action"
                           aria-label={`Archive ${item.name}`}
                           onClick={(event) => event.stopPropagation()}
                         >
-                          <Archive size={14} />
+                          <Archive size={17} />
                         </button>
                       </span>
                     </div>
@@ -2083,7 +2083,7 @@ function PartnersPage({ draft, setDraft }) {
                       </div>
                       {item.link && (
                         <span className="partner-link" aria-label={item.link === 'main' ? 'Main partner' : 'Connected partner'}>
-                          {item.link === 'main' ? <Link2 size={15} /> : <ArrowLeftRight size={15} />}
+                          {item.link === 'main' ? <Link2 size={17} /> : <ArrowLeftRight size={17} />}
                         </span>
                       )}
                     </div>

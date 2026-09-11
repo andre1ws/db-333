@@ -606,7 +606,7 @@ button { transition: .18s ease; }
 .labels-table tbody tr:hover .row-actions,
 .labels-table tbody tr:focus-within .row-actions { opacity: 1; }
 .row-action {
-  width: 26px; height: 26px; flex: 0 0 26px; display: grid; place-items: center;
+  width: 28px; height: 28px; flex: 0 0 28px; display: grid; place-items: center;
   border-radius: var(--r-sm); background: transparent; color: var(--text-muted);
 }
 .row-action:hover { background: var(--surface-3); color: var(--text); }
