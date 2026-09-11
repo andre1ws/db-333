@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import {
   Archive, ArrowDown, ArrowDownUp, ArrowUp, ArrowUpDown, BadgePercent, BarChart3, CalendarDays,
@@ -965,37 +965,26 @@ function FilterSelect({ value, onChange, placeholder, options, disabled }) {
 }
 
 function FilterBar({ filters }) {
-  const anchor = useRef(null)
   const { panelOpen, setPanelOpen } = filters
 
   useEffect(() => {
     if (!panelOpen) return undefined
-    const onPointerDown = (event) => {
-      if (!anchor.current?.contains(event.target)) setPanelOpen(false)
-    }
     const onKeyDown = (event) => { if (event.key === 'Escape') setPanelOpen(false) }
-    document.addEventListener('mousedown', onPointerDown)
     document.addEventListener('keydown', onKeyDown)
-    return () => {
-      document.removeEventListener('mousedown', onPointerDown)
-      document.removeEventListener('keydown', onKeyDown)
-    }
+    return () => document.removeEventListener('keydown', onKeyDown)
   }, [panelOpen, setPanelOpen])
 
   return (
     <>
-      <div className="filter-anchor" ref={anchor}>
-        <button
-          className={`icon-button users-filter ${panelOpen || filters.activeCount > 0 ? 'active' : ''}`}
-          onClick={() => setPanelOpen((current) => !current)}
-          aria-label="Filters"
-          aria-expanded={panelOpen}
-        >
-          <SlidersHorizontal size={16} />
-          {filters.activeCount > 0 && <span className="filter-count">{filters.activeCount}</span>}
-        </button>
-        {panelOpen && <FiltersPanel {...filters.panelProps} />}
-      </div>
+      <button
+        className={`icon-button users-filter ${panelOpen || filters.activeCount > 0 ? 'active' : ''}`}
+        onClick={() => setPanelOpen((current) => !current)}
+        aria-label="Filters"
+        aria-expanded={panelOpen}
+      >
+        <SlidersHorizontal size={16} />
+        {filters.activeCount > 0 && <span className="filter-count">{filters.activeCount}</span>}
+      </button>
       {filters.presets.map((preset) => (
         <span key={preset.id} className={`preset-chip ${filters.activePresetId === preset.id ? 'active' : ''}`}>
           <button className="preset-chip-label" onClick={() => filters.togglePreset(preset)}>{preset.name}</button>
@@ -1063,11 +1052,11 @@ function FiltersPanel({
             disabled={valueDisabled}
           />
         </label>
-      </div>
 
-      <button className="filters-add" onClick={onAdd} disabled={!canAdd}>
-        <Plus size={14} strokeWidth={2.2} /> Add filter
-      </button>
+        <button className="filters-add" onClick={onAdd} disabled={!canAdd}>
+          <Plus size={14} strokeWidth={2.2} /> Add filter
+        </button>
+      </div>
 
       <div className="filters-added">
         <div className="filters-added-head">
@@ -1101,22 +1090,22 @@ function FiltersPanel({
             <Trash2 size={13} /> Delete “{activePreset.name}”
           </button>
         )}
+        <div className="filters-preset">
+          <span>Create new preset</span>
+          <input
+            value={presetName}
+            onChange={(event) => onPresetNameChange(event.target.value)}
+            placeholder="Enter the preset name"
+          />
+          <button
+            className="secondary-button"
+            onClick={onSavePreset}
+            disabled={!presetName.trim() || draft.length === 0}
+          >
+            Create
+          </button>
+        </div>
       </footer>
-
-      <div className="filters-preset">
-        <input
-          value={presetName}
-          onChange={(event) => onPresetNameChange(event.target.value)}
-          placeholder="Preset name"
-        />
-        <button
-          className="secondary-button"
-          onClick={onSavePreset}
-          disabled={!presetName.trim() || draft.length === 0}
-        >
-          Save
-        </button>
-      </div>
       {draft.length === 0 && (
         <p className="filters-preset-hint">Add at least one filter above before saving a preset.</p>
       )}
@@ -1163,6 +1152,7 @@ function UsersPage() {
         </div>
       </HeaderTools>
 
+      {filters.panelOpen && <FiltersPanel {...filters.panelProps} />}
 
       <section className="panel users-panel">
         <div className="users-table-wrap">
@@ -1275,6 +1265,7 @@ function NotificationsPage({ draft, setDraft }) {
         <button className="archive-button toolbar-archive"><Archive size={16} /> Archive</button>
       </HeaderTools>
 
+      {filters.panelOpen && <FiltersPanel {...filters.panelProps} />}
 
       <section className="panel users-panel">
         <div className="users-table-wrap">
@@ -1403,6 +1394,7 @@ function TransactionsPage({ region }) {
         </div>
       </HeaderTools>
 
+      {filters.panelOpen && <FiltersPanel {...filters.panelProps} />}
 
       <section className="panel users-panel">
         <div className="users-table-wrap">
@@ -1740,6 +1732,7 @@ function PromotionsPage({ draft, setDraft }) {
         <button className="archive-button toolbar-archive"><Archive size={16} /> Archive</button>
       </HeaderTools>
 
+      {filters.panelOpen && <FiltersPanel {...filters.panelProps} />}
 
       <section className="panel promotions-panel">
         <div className="promotions-table-wrap">
@@ -1864,6 +1857,8 @@ function LabelsPage({ draft, setDraft }) {
         <FilterBar filters={filters} />
         <button className="archive-button toolbar-archive"><Archive size={16} /> Archive</button>
       </HeaderTools>
+
+      {filters.panelOpen && <FiltersPanel {...filters.panelProps} />}
 
       <section className="panel promotions-panel">
         <div className="promotions-table-wrap">
@@ -2060,6 +2055,8 @@ function PartnersPage({ draft, setDraft }) {
           <button className="archive-button"><Archive size={16} /> Archive</button>
         </div>
       </HeaderTools>
+
+      {filters.panelOpen && <FiltersPanel {...filters.panelProps} />}
 
       <section className="panel users-panel">
         <div className="users-table-wrap">
